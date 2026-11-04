@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Song Memory Battle & Leaderboard</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at 50% 15%, #1e1b4b, #090d16);
+      color: #f8fafc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1.25rem;
+    }
+    .quiz-card {
+      background: rgba(30, 41, 59, 0.96);
+      border: 1px solid #334155;
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 2.25rem 2rem;
+      max-width: 620px;
+      width: 100%;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+    }
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+    .score-badge { color: #38bdf8; }
+    .streak-badge { color: #facc15; }
+    .quote-box {
+      background: #0f172a;
+      border-left: 4px solid #38bdf8;
+      border-radius: 14px;
+      padding: 1.6rem;
+      margin-bottom: 1.75rem;
+    }
+    .quote-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #94a3b8;
+      margin-bottom: 0.75rem;
+    }
+    .lyric-text {
+      font-size: 1.35rem;
+      line-height: 1.6;
+      font-weight: 600;
+      color: #ffffff;
+      font-style: italic;
+    }
+    .options-grid {
+      display: grid;
+      gap: 0.85rem;
+    }
+    .choice-btn {
+      background: #334155;
+      color: #f1f5f9;
+      border: 1px solid #475569;
+      padding: 1.05rem 1.25rem;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: all 0.15s ease-in-out;
+    }
+    .choice-btn:hover:not(:disabled) {
+      background: #475569;
+      border-color: #64748b;
+      transform: translateY(-2px);
+    }
+    .choice-btn .choice-prefix {
+      font-weight: 800;
+      color: #94a3b8;
+      margin-right: 0.85rem;
+    }
+    .choice-btn.correct {
+      background: #15803d !important;
+      border-color: #22c55e !important;
+      color: #fff !important;
+    }
+    .choice-btn.wrong {
+      background: #991b1b !important;
+      border-color: #ef4444 !important;
+      color: #fff !important;
+    }
+    /* Game Over & Leaderboard styling */
+    .game-over-header {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #ef4444;
+      margin-bottom: 0.5rem;
+    }
+    .score-summary {
+      text-align: center;
+      font-size: 2.75rem;
+      font-weight: 900;
+      color: #38bdf8;
+      margin: 0.75rem 0 1.25rem 0;
+    }
+    .name-input-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      border: 1px solid #475569;
+      background: #0f172a;
+      color: #f8fafc;
+      font-size: 1rem;
+    }
+    .btn-save {
+      background: #0284c7;
+      color: #fff;
+      border: none;
+      padding: 0 1.25rem;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-save:hover { background: #0369a1; }
+    .leaderboard-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #facc15;
+      margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .leaderboard-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .leaderboard-table th, .leaderboard-table td {
+      padding: 0.65rem 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #334155;
+    }
+    .leaderboard-table th {
+      color: #94a3b8;
+      font-weight: 600;
+    }
+    .leaderboard-table tr:first-child td {
+      color: #facc15;
+      font-weight: 700;
+    }
+    .btn-restart {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      border: none;
+      padding: 1rem;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn-restart:hover { opacity: 0.92; }
+  </style>
+</head>
+<body>
+
+  <!-- QUIZ CARD -->
+  <div class="quiz-card" id="game-card">
+    <div class="status-bar">
+      <div class="score-badge">Điểm: <span id="score-val">0</span></div>
+      <div class="streak-badge" id="streak-val">🔥 Chuỗi: 0</div>
+    </div>
+
+    <div class="quote-box">
+      <div class="quote-label">Câu hát này nằm trong bài hát nào?</div>
+      <div class="lyric-text" id="lyric-display">"..."</div>
+    </div>
+
+    <div class="options-grid" id="options-box"></div>
+  </div>
+
+  <script>
+    const songDatabase = {
+      "MVP (Mưa Vội Phóng)": [
+        "Mưa, nhẹ rơi, màn đêm, mình anh phóng qua nơi em",
+        "Từng hàng cây từng con phố, chờ anh chút thôi",
+        "Người còn định dỗi anh đến bao giờ, xuống đây đi anh chờ",
+        "Lòng không yên mỗi khi thấy em thờ ơ",
+        "Đừng mặc anh dưới mưa buồn rơi ướt áo",
+        "Nếu yêu em là điều dại dột thì con tim anh muốn sai"
+      ],
+      "Catch Me If You Can": [
+        "Quay lưng sang đã thấy người đi",
+        "Chẳng còn tương lai lấp lánh như trong cơn mơ lúc em vẫn ngây thơ",
+        "Bỏ anh đi làm gì không giữ lúc mất đừng tìm thôi thì ngậm cay đắng đi",
+        "Đừng vì một phút cô đơn mà tìm đến bên anh",
+        "Kiếm lấy anh để săn mồi, you're chasing behind my back",
+        "Giờ thì ai lau nước mắt em trong cơn say giữa cơn đau đọa đày?",
+        "Anh chẳng phải là game cho em chơi rồi lại quay xe",
+        "Catch me if you can, đuổi theo anh nếu em làm được"
+      ],
+      "Laviem": [
+        "Trái tim anh chẳng còn cần thiết nữa, nói chi đến đây cũng thừa",
+        "Rượu vang pha với cơn mưa",
+        "Hàng trăm lý do cũng chẳng thể cứu vãn",
+        "Dệt hàng triệu vết thương, tự vùi mình trước gương",
+        "Nhìn một người đã từng thương sao nay xa lạ đến bất thường",
+        "Cố gắng cũng chỉ bằng không, nước mắt ngược dòng",
+        "Những khung trời kỷ niệm vỡ đôi",
+        "Kẻ ngốc đang say tình dưới ngọn đèn"
+      ],
+      "Xoay Vòng": [
+        "Mỗi lần tim em thấy đau lại tìm về nơi anh",
+        "Bờ vai đây chỉ để mi người vội khô nhanh",
+        "Đến bên và ôm anh từ xa trong anh lại thôi những vụn vỡ",
+        "Phải xoay vòng, xoay vòng, xoay vòng đến bao giờ",
+        "Chạy theo ngay sau mà sao em cứ xa mờ",
+        "Vì đôi tay đó sẽ khiến anh yếu mềm, yếu thêm, lại yêu em",
+        "Kêu than sao không một ai bên, vậy anh là ai sao em thật hay quên"
+      ],
+      "Tình Đầu Quá Chén": [
+        "Tình đầu trong anh như chén rượu sầu, dẫu có lúc nhạt màu",
+        "Tỉnh giấc lúc hai giờ, nhớ em, nhớ trong giấc mơ",
+        "Tình đầu ai cũng có lỗi lầm mà, cũng phải có lần đầu vấp ngã",
+        "Từng lời nói nên nhẹ nhàng thấm thía, chuyện buồn dễ đến rồi đi",
+        "Mối tình đầu quá trớn, ta nên dừng",
+        "Từng là ngàn câu hứa phôi phai, giờ này người đang nhấp môi ai?",
+        "Tình đầu mong manh như lá lìa cành",
+        "Như trăng giữa mặt hồ sóng đánh, xô nghiêng chẳng thể vẹn nguyên"
+      ],
+      "Hermosa": [
+        "Lạc vào sâu trong mắt em, nửa ly sao say mèm với gã si tình",
+        "Từng ngày trôi qua cứ ôm cây đàn, tịch tịch tình tang nhớ nhung cô nàng",
+        "Hola hermosa, tựa như tranh vẽ",
+        "Làm cho trái tim anh rung động không ngừng, hằng đêm thao thức",
+        "Từ khi thấy em anh chỉ muốn nói là đừng đi nhanh quá",
+        "Muốn bên em đi khắp thế gian này",
+        "Nàng như thắp sáng cả bầu trời",
+        "Chẳng cần châu báu ở trên đời"
+      ],
+      "MRT": [
+        "Từng là lời hứa của cả thanh xuân, sao giờ nói quên là quên?",
+        "Anh ngồi xóa đi biệt danh ta đã đặt tên",
+        "Chỉ còn thấy nhau, ở cuối ga trên đoàn tàu",
+        "Mặt trời dần xa khỏi nơi này, là nơi mà ta từng yêu rất đậm sâu",
+        "Cả đời này anh nợ em lời xin lỗi, khi tình yêu dần lạc lối",
+        "Đoàn tàu lăn bánh chia đôi cả thế giới, hai người hai khoảng trời mới",
+        "Khi trạm ga tàu đi thật xa nơi cả hai từng qua"
+      ],
+      "Kim Phút, Kim Giờ": [
+        "Vậy đây là phút giây cuối thật sao?",
+        "Ôm trong lòng là những thành tích, giờ đã thành vô nghĩa",
+        "Đồng hồ cứ tích tắc trôi, anh biết rằng đã không kịp rồi",
+        "Mua được chiếc đồng hồ trong mơ nhưng bây giờ chỉ mong rằng nó sẽ chết đi",
+        "Mình phải chia tay thật sao? Còn nhiều lời hứa từng trao",
+        "Ước cho kim đồng hồ kia ngừng để ta sẽ mãi đứng im",
+        "Người lặng nhìn vấn vương, người nặng tình vẫn thương",
+        "Giờ đây anh phải thế nào? Đứng nhìn em cùng người ta sao?",
+        "Chẳng muốn phải ôm khát vọng, rồi lỡ buông tay bỏ mặc em ở lại phía sau",
+        "Chẳng phải đuổi theo điều gì"
+      ],
+      "Thế Giới Của Anh": [
+        "Thế giới trong anh tựa như sáng lên khi em vừa đến đây",
+        "Cả cơn giông bỗng hóa, mưa tạnh mây tan",
+        "Vì anh chôn sâu nhiều ưu phiền trong mắt",
+        "Khi anh buông cả thế giới, em mang nụ cười đến với",
+        "Đợi anh như mơ, êm đềm như thơ",
+        "Là em đã sưởi ấm hy vọng trong trái tim anh",
+        "Anh đã tin vào tình yêu, giây phút ấy rực rỡ hơn bao điều"
+      ],
+      "Sao Hạng A": [
+        "Thề là thấy em giây đầu tiên, anh đã muốn đưa em lên thuyền",
+        "Baby bấy lâu nay ở đâu? Sao giờ mới được nhìn thấy nhau?",
+        "Thật lòng những ngôi sao ngoài kia chẳng có ai lọt vào được mắt anh",
+        "Xứng tầm được làm một ngôi sao ở tận trên cao nếu anh ngay bên cạnh"
+      ],
+      "Dancin' My Way": [
+        "Cứ bước tiếp đi, dancin' my way",
+        "Bỏ lại đằng sau bao nhiêu âu lo đêm nay",
+        "Chẳng cần nhìn ai, chỉ cần là chính mình",
+        "Để từng nhịp beat dẫn lối cho con tim rung lên"
+      ],
+      "Love Sand": [
+        "Lạc vào đại dương cát mịn màng ánh nắng",
+        "Từng nhịp thở rung lên giữa không gian tĩnh lặng",
+        "Chạm vào bờ môi trao ngàn câu đắm say",
+        "Để tình yêu cuốn ta trôi theo từng cơn gió bay"
+      ],
+      "Thêu Hoa Dệt Gấm": [
+        "Từng đường kim thêu lên gấm hoa",
+        "Gửi trọn tình này về nơi phương xa",
+        "Ngàn lời thương trao em chẳng phai nhòa",
+        "Dệt trọn một đời son sắt bên nhau"
+      ],
+      "50 Cuộc Gọi Nhỡ": [
+        "50 cuộc gọi nhỡ trong một đêm dài",
+        "Từng dòng tin nhắn gửi gắm hy vọng mong manh",
+        "Biết em đã rời xa nhưng lòng chẳng thể buông",
+        "Chỉ muốn nghe lại một lần giọng nói thân quen"
+      ],
+      "Mộng Duyên": [
+        "Mộng duyên tan vỡ theo ngàn cánh hoa rơi",
+        "Người đi xa mãi để lại nỗi chơi vơi",
+        "Trách sao duyên phận lỡ dở đôi bờ",
+        "Một đời tương tư ôm trọn giấc mơ tàn"
+      ]
+    };
+
+    const allTrackNames = Object.keys(songDatabase);
+    let score = 0;
+    let streak = 0;
+    let lastLyric = "";
+
+    function getRandomElement(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function nextTurn() {
+      const playableTracks = allTrackNames.filter(name => songDatabase[name].length > 0);
+      const targetTrack = getRandomElement(playableTracks);
+      const lines = songDatabase[targetTrack];
+
+      let chosenLine = "";
+      do {
+        chosenLine = getRandomElement(lines);
+      } while (chosenLine === lastLyric && lines.length > 1);
+      lastLyric = chosenLine;
+
+      document.getElementById("lyric-display").textContent = `"${chosenLine}"`;
+
+      const otherTracks = allTrackNames.filter(name => name !== targetTrack);
+      const distractors = otherTracks.sort(() => 0.5 - Math.random()).slice(0, 3);
+      const choices = [...distractors, targetTrack].sort(() => 0.5 - Math.random());
+
+      const container = document.getElementById("options-box");
+      container.innerHTML = "";
+
+      choices.forEach((trackTitle, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "choice-btn";
+        btn.dataset.track = trackTitle;
+        btn.innerHTML = `<span class="choice-prefix">${String.fromCharCode(65 + idx)}.</span> <span>${trackTitle}</span>`;
+        btn.onclick = () => handlePick(btn, trackTitle, targetTrack);
+        container.appendChild(btn);
+      });
+    }
+
+    function handlePick(selectedBtn, chosenTitle, correctTitle) {
+      const buttons = document.querySelectorAll(".choice-btn");
+      buttons.forEach(b => (b.disabled = true));
+
+      if (chosenTitle === correctTitle) {
+        selectedBtn.classList.add("correct");
+        score += 10;
+        streak += 1;
+        document.getElementById("score-val").textContent = score;
+        document.getElementById("streak-val").textContent = `🔥 Chuỗi: ${streak}`;
+
+        setTimeout(() => {
+          nextTurn();
+        }, 700);
+      } else {
+        // Highlight wrong pick and reveal the correct answer
+        selectedBtn.classList.add("wrong");
+        buttons.forEach(b => {
+          if (b.dataset.track === correctTitle) {
+            b.classList.add("correct");
+          }
+        });
+
+        // End game and show scoreboard
+        setTimeout(() => {
+          showGameOverScreen(correctTitle);
+        }, 1200);
+      }
+    }
+
+    function getScores() {
+      return JSON.parse(localStorage.getItem("song_quiz_leaderboard") || "[]");
+    }
+
+    function saveScore(name, finalScore) {
+      const list = getScores();
+      list.push({
+        name: name.trim() || "Ẩn danh",
+        score: finalScore,
+        date: new Date().toLocaleDateString("vi-VN")
+      });
+      list.sort((a, b) => b.score - a.score);
+      localStorage.setItem("song_quiz_leaderboard", JSON.stringify(list.slice(0, 10)));
+    }
+
+    function renderLeaderboardTable() {
+      const list = getScores();
+      if (list.length === 0) {
+        return `<p style="color: #64748b; text-align: center; margin: 1rem 0;">Chưa có kỷ lục nào được ghi nhận.</p>`;
+      }
+
+      let rows = list.map((item, index) => `
+        <tr>
+          <td>#${index + 1}</td>
+          <td>${item.name}</td>
+          <td><strong>${item.score}</strong></td>
+          <td style="color: #64748b; font-size: 0.85rem;">${item.date}</td>
+        </tr>
+      `).join("");
+
+      return `
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Top</th>
+              <th>Người chơi</th>
+              <th>Điểm</th>
+              <th>Ngày</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      `;
+    }
+
+    function showGameOverScreen(correctTitle) {
+      const card = document.getElementById("game-card");
+      card.innerHTML = `
+        <div class="game-over-header">BẠN ĐÃ CHỌN SAI!</div>
+        <p style="text-align: center; color: #94a3b8; font-size: 0.95rem;">
+          Đáp án đúng: <strong style="color: #22c55e;">${correctTitle}</strong>
+        </p>
+        <div class="score-summary">${score} Điểm</div>
+
+        <div id="save-section">
+          <div class="name-input-group">
+            <input type="text" id="player-name" placeholder="Nhập tên của bạn để lưu điểm..." maxlength="20" />
+            <button class="btn-save" onclick="handleSaveScore()">Lưu</button>
+          </div>
+        </div>
+
+        <div class="leaderboard-title">
+          <span>🏆 BẢNG XẾP HẠNG</span>
+          <span style="font-size: 0.85rem; color: #64748b;">(Top 10)</span>
+        </div>
+        <div id="board-container">
+          ${renderLeaderboardTable()}
+        </div>
+
+        <button class="btn-restart" onclick="location.reload()">Đấu lại ván mới</button>
+      `;
+    }
+
+    function handleSaveScore() {
+      const nameInput = document.getElementById("player-name");
+      const name = nameInput.value;
+      saveScore(name, score);
+      document.getElementById("save-section").innerHTML = `
+        <p style="text-align: center; color: #38bdf8; font-weight: 600; margin-bottom: 1.25rem;">
+          Đã lưu kết quả của bạn thành công!
+        </p>
+      `;
+      document.getElementById("board-container").innerHTML = renderLeaderboardTable();
+    }
+
+    nextTurn();
+  </script>
+</body>
+</html>
