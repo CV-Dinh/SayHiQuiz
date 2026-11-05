@@ -363,14 +363,14 @@
     // Points >= 800 will receive rank_800.png (or rank_legend.png)
     function getScoreImage(finalScore) {
       const tiers = [
-        { threshold: 100, img: "./Images/Rank_100.png" }, // 0 - 90
-        { threshold: 200, img: "./Images/Rank_200.png" }, // 100 - 190
-        { threshold: 300, img: "./Images/Rank_300.png" }, // 200 - 290
-        { threshold: 400, img: "./Images/Rank_400.png" }, // 300 - 390
-        { threshold: 500, img: "./Images/Rank_500.png" }, // 400 - 490
-        { threshold: 600, img: "./Images/Rank_600.png" }, // 500 - 590
-        { threshold: 700, img: "./Images/Rank_700.png" }, // 600 - 690
-        { threshold: 800, img: "./Images/Rank_800.png" }  // 700 - 790
+        { threshold: 100, img: "./Image/Rank_100.png" }, // 0 - 90
+        { threshold: 200, img: "./Image/Rank_200.png" }, // 100 - 190
+        { threshold: 300, img: "./Image/Rank_300.png" }, // 200 - 290
+        { threshold: 400, img: "./Image/Rank_400.png" }, // 300 - 390
+        { threshold: 500, img: "./Image/Rank_500.png" }, // 400 - 490
+        { threshold: 600, img: "./Image/Rank_600.png" }, // 500 - 590
+        { threshold: 700, img: "./Image/Rank_700.png" }, // 600 - 690
+        { threshold: 800, img: "./Image/Rank_800.png" }  // 700 - 790
       ];
 
       for (const tier of tiers) {
@@ -378,7 +378,7 @@
           return tier.img;
         }
       }
-      return "./images/rank_800.png"; // 800+ points
+      return "./Image/rank_800.png"; // 800+ points
     }
 
     function getRandomElement(arr) {
