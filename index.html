@@ -112,7 +112,7 @@
       font-size: 0.85rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       color: #64748b;
       margin-bottom: 0.6rem;
     }
@@ -154,7 +154,7 @@
       display: flex;
       align-items: center;
       position: relative;
-      transition: transform 0.08s ease, filter 0.15s ease, box-shadow 0.08s ease;
+      transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease, opacity 0.2s ease, background 0.2s ease;
       line-height: 1.35;
       user-select: none;
     }
@@ -189,22 +189,32 @@
     .choice-btn:nth-child(3):active:not(:disabled) { box-shadow: 0 2px 0 var(--kahoot-yellow-dark); }
     .choice-btn:nth-child(4):active:not(:disabled) { box-shadow: 0 2px 0 var(--kahoot-green-dark); }
 
-    /* Win / Wrong States */
+    /* Win / Wrong / Dimmed States */
     .choice-btn.correct {
       background: #10b981 !important;
       box-shadow: 0 6px 0 #047857 !important;
+      opacity: 1 !important;
+      transform: scale(1.03);
       animation: bounceWin 0.4s ease;
     }
     .choice-btn.wrong {
+      background: var(--kahoot-red) !important;
+      box-shadow: 0 6px 0 var(--kahoot-red-dark) !important;
+      opacity: 1 !important;
+      transform: scale(0.98);
+    }
+    .choice-btn.dimmed {
       background: #64748b !important;
-      box-shadow: 0 6px 0 #334155 !important;
-      opacity: 0.45;
-      transform: scale(0.96);
+      box-shadow: 0 4px 0 #475569 !important;
+      opacity: 0.35 !important;
+      transform: scale(0.96) !important;
+      filter: grayscale(80%) !important;
+      cursor: default;
     }
 
     @keyframes bounceWin {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      0%, 100% { transform: scale(1.03); }
+      50% { transform: scale(1.08); }
     }
 
     /* Game Over Section */
@@ -603,6 +613,13 @@
 
       if (chosenTitle === correctTitle) {[cite: 4]
         selectedBtn.classList.add("correct");[cite: 4]
+        // Grey out all other options
+        buttons.forEach(b => {
+          if (b !== selectedBtn) {
+            b.classList.add("dimmed");
+          }
+        });
+
         score += 10;[cite: 4]
         streak += 1;[cite: 4]
         document.getElementById("score-val").textContent = score;[cite: 4]
@@ -616,6 +633,9 @@
         buttons.forEach(b => {[cite: 4]
           if (b.dataset.track === correctTitle) {[cite: 4]
             b.classList.add("correct");[cite: 4]
+          } else if (b !== selectedBtn) {
+            // Grey out the other incorrect options
+            b.classList.add("dimmed");
           }
         });
 
@@ -662,7 +682,7 @@
               .update({[cite: 5]
                 score: finalScore,[cite: 5]
                 created_at: new Date().toISOString()[cite: 5]
-              })
+              })[cite: 5]
               .eq("id", record.id);[cite: 5]
 
             if (updateErr) throw updateErr;[cite: 5]
@@ -673,7 +693,7 @@
             .from("leaderboard")[cite: 5]
             .insert([[cite: 5]
               { name: cleanName, score: finalScore }[cite: 5]
-            ]);
+            ]);[cite: 5]
 
           if (insertErr) throw insertErr;[cite: 5]
           return true;[cite: 5]
