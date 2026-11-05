@@ -6,10 +6,10 @@
   <title>Song Memory Battle - Kahoot Edition</title>
   <!-- Load Supabase JS Client directly via CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <!-- Google Font: Fredoka for that bubbly game feel -->
+  <!-- Google Font: Nunito with full Vietnamese subset -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --kahoot-red: #e21b3c;
@@ -27,7 +27,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Fredoka', 'Montserrat', -apple-system, sans-serif;
+      font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: linear-gradient(135deg, #46178f 0%, #250761 100%);
       color: #ffffff;
       display: flex;
@@ -112,7 +112,7 @@
       font-size: 0.85rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       color: #64748b;
       margin-bottom: 0.6rem;
     }
@@ -120,7 +120,7 @@
     .lyric-text {
       font-size: 1.35rem;
       line-height: 1.55;
-      font-weight: 700;
+      font-weight: 800;
       color: #0f172a;
     }
 
@@ -143,7 +143,7 @@
     .choice-btn {
       color: #ffffff;
       border: none;
-      padding: 1.25rem 1.4rem;
+      padding: 1.2rem 1.3rem;
       border-radius: 16px;
       font-family: inherit;
       font-size: 1.15rem;
@@ -211,7 +211,7 @@
     .game-over-header {
       text-align: center;
       font-size: 2.2rem;
-      font-weight: 800;
+      font-weight: 900;
       color: var(--kahoot-red);
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -226,7 +226,7 @@
       text-align: center;
       margin: 0.75rem 0 1.25rem 0;
       font-size: 1.05rem;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .rank-badge-container {
@@ -269,7 +269,7 @@
       color: #0f172a;
       font-size: 1.05rem;
       font-family: inherit;
-      font-weight: 600;
+      font-weight: 700;
       outline: none;
       transition: border-color 0.2s;
     }
@@ -286,7 +286,7 @@
       border-radius: 14px;
       font-family: inherit;
       font-size: 1.05rem;
-      font-weight: 800;
+      font-weight: 900;
       cursor: pointer;
       transition: transform 0.08s;
     }
@@ -298,7 +298,7 @@
     /* Leaderboard */
     .leaderboard-title {
       font-size: 1.2rem;
-      font-weight: 800;
+      font-weight: 900;
       color: #1e293b;
       margin-bottom: 0.75rem;
       display: flex;
@@ -316,7 +316,7 @@
 
     .leaderboard-table th {
       color: #64748b;
-      font-weight: 700;
+      font-weight: 800;
       padding: 0.4rem 0.8rem;
       text-align: left;
     }
@@ -324,7 +324,7 @@
     .leaderboard-table tr td {
       background: #f8fafc;
       padding: 0.65rem 0.8rem;
-      font-weight: 600;
+      font-weight: 700;
       color: #1e293b;
     }
     .leaderboard-table tr td:first-child { border-radius: 10px 0 0 10px; }
@@ -333,17 +333,17 @@
     .leaderboard-table tbody tr:nth-child(1) td {
       background: #fef9c3;
       color: #854d0e;
-      font-weight: 800;
+      font-weight: 900;
     }
     .leaderboard-table tbody tr:nth-child(2) td {
       background: #f1f5f9;
       color: #334155;
-      font-weight: 700;
+      font-weight: 800;
     }
     .leaderboard-table tbody tr:nth-child(3) td {
       background: #ffedd5;
       color: #9a3412;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .btn-restart {
@@ -355,7 +355,7 @@
       border-radius: 16px;
       font-family: inherit;
       font-size: 1.2rem;
-      font-weight: 800;
+      font-weight: 900;
       cursor: pointer;
       width: 100%;
       letter-spacing: 0.02em;
@@ -395,11 +395,11 @@
 
   <script>
     // --- 1. CONFIGURE YOUR SUPABASE CREDENTIALS HERE ---
-    const SUPABASE_URL = "https://valdbdkrbmnjsugyyfms.supabase.co";
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZhbGRiZGtyYm1uanN1Z3l5Zm1zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM4MzIzMzMsImV4cCI6MjEwOTQwODMzM30.JeGV6p4esHmkHZAjP-yIT8JHt1xiXN5Gl705xJHnrYg";
+    const SUPABASE_URL = "https://valdbdkrbmnjsugyyfms.supabase.co";[cite: 4]
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZhbGRiZGtyYm1uanN1Z3l5Zm1zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM4MzIzMzMsImV4cCI6MjEwOTQwODMzM30.JeGV6p4esHmkHZAjP-yIT8JHt1xiXN5Gl705xJHnrYg";[cite: 4]
 
     // Initialize Supabase Client
-    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);[cite: 4]
 
     // --- 2. SONG DATABASE (15 Tracks) ---
     const songDatabase = {
@@ -537,10 +537,10 @@
       ]
     };
 
-    const allTrackNames = Object.keys(songDatabase);
-    let score = 0;
-    let streak = 0;
-    let lastLyric = "";
+    const allTrackNames = Object.keys(songDatabase);[cite: 4]
+    let score = 0;[cite: 4]
+    let streak = 0;[cite: 4]
+    let lastLyric = "";[cite: 4]
 
     // 8 Tier Rank Badges
     function getScoreImage(finalScore) {
@@ -564,28 +564,28 @@
     }
 
     function getRandomElement(arr) {
-      return arr[Math.floor(Math.random() * arr.length)];
+      return arr[Math.floor(Math.random() * arr.length)];[cite: 4]
     }
 
     function nextTurn() {
-      const playableTracks = allTrackNames.filter(name => songDatabase[name].length > 0);
-      const targetTrack = getRandomElement(playableTracks);
-      const lines = songDatabase[targetTrack];
+      const playableTracks = allTrackNames.filter(name => songDatabase[name].length > 0);[cite: 4]
+      const targetTrack = getRandomElement(playableTracks);[cite: 4]
+      const lines = songDatabase[targetTrack];[cite: 4]
 
-      let chosenLine = "";
+      let chosenLine = "";[cite: 4]
       do {
-        chosenLine = getRandomElement(lines);
-      } while (chosenLine === lastLyric && lines.length > 1);
-      lastLyric = chosenLine;
+        chosenLine = getRandomElement(lines);[cite: 4]
+      } while (chosenLine === lastLyric && lines.length > 1);[cite: 4]
+      lastLyric = chosenLine;[cite: 4]
 
-      document.getElementById("lyric-display").textContent = `"${chosenLine}"`;
+      document.getElementById("lyric-display").textContent = `"${chosenLine}"`;[cite: 4]
 
-      const otherTracks = allTrackNames.filter(name => name !== targetTrack);
-      const distractors = otherTracks.sort(() => 0.5 - Math.random()).slice(0, 3);
-      const choices = [...distractors, targetTrack].sort(() => 0.5 - Math.random());
+      const otherTracks = allTrackNames.filter(name => name !== targetTrack);[cite: 4]
+      const distractors = otherTracks.sort(() => 0.5 - Math.random()).slice(0, 3);[cite: 4]
+      const choices = [...distractors, targetTrack].sort(() => 0.5 - Math.random());[cite: 4]
 
-      const container = document.getElementById("options-box");
-      container.innerHTML = "";
+      const container = document.getElementById("options-box");[cite: 4]
+      container.innerHTML = "";[cite: 4]
 
       choices.forEach((trackTitle) => {
         const btn = document.createElement("button");
@@ -598,100 +598,100 @@
     }
 
     function handlePick(selectedBtn, chosenTitle, correctTitle) {
-      const buttons = document.querySelectorAll(".choice-btn");
-      buttons.forEach(b => (b.disabled = true));
+      const buttons = document.querySelectorAll(".choice-btn");[cite: 4]
+      buttons.forEach(b => (b.disabled = true));[cite: 4]
 
-      if (chosenTitle === correctTitle) {
-        selectedBtn.classList.add("correct");
-        score += 10;
-        streak += 1;
-        document.getElementById("score-val").textContent = score;
+      if (chosenTitle === correctTitle) {[cite: 4]
+        selectedBtn.classList.add("correct");[cite: 4]
+        score += 10;[cite: 4]
+        streak += 1;[cite: 4]
+        document.getElementById("score-val").textContent = score;[cite: 4]
         document.getElementById("streak-val").textContent = `🔥 CHUỖI: ${streak}`;
 
-        setTimeout(() => {
-          nextTurn();
-        }, 700);
+        setTimeout(() => {[cite: 4]
+          nextTurn();[cite: 4]
+        }, 700);[cite: 4]
       } else {
-        selectedBtn.classList.add("wrong");
-        buttons.forEach(b => {
-          if (b.dataset.track === correctTitle) {
-            b.classList.add("correct");
+        selectedBtn.classList.add("wrong");[cite: 4]
+        buttons.forEach(b => {[cite: 4]
+          if (b.dataset.track === correctTitle) {[cite: 4]
+            b.classList.add("correct");[cite: 4]
           }
         });
 
-        setTimeout(() => {
-          showGameOverScreen(correctTitle);
-        }, 1200);
+        setTimeout(() => {[cite: 4]
+          showGameOverScreen(correctTitle);[cite: 4]
+        }, 1200);[cite: 4]
       }
     }
 
     // --- 3. SUPABASE CLOUD LEADERBOARD ---
     async function fetchCloudLeaderboard() {
       try {
-        const { data, error } = await supabaseClient
-          .from("leaderboard")
-          .select("name, score, created_at")
-          .order("score", { ascending: false })
-          .limit(10);
+        const { data, error } = await supabaseClient[cite: 4]
+          .from("leaderboard")[cite: 4]
+          .select("name, score, created_at")[cite: 4]
+          .order("score", { ascending: false })[cite: 4]
+          .limit(10);[cite: 4]
 
-        if (error) throw error;
-        return data || [];
+        if (error) throw error;[cite: 4]
+        return data || [];[cite: 4]
       } catch (err) {
-        console.error("Lỗi khi tải bảng xếp hạng:", err);
-        return [];
+        console.error("Lỗi khi tải bảng xếp hạng:", err);[cite: 4]
+        return [];[cite: 4]
       }
     }
 
     async function saveScoreToCloud(name, finalScore) {
       try {
-        const cleanName = name.trim() || "Ẩn danh";
+        const cleanName = name.trim() || "Ẩn danh";[cite: 5]
 
-        const { data: existingPlayers, error: fetchErr } = await supabaseClient
-          .from("leaderboard")
-          .select("id, score")
-          .ilike("name", cleanName)
-          .limit(1);
+        const { data: existingPlayers, error: fetchErr } = await supabaseClient[cite: 5]
+          .from("leaderboard")[cite: 5]
+          .select("id, score")[cite: 5]
+          .ilike("name", cleanName)[cite: 5]
+          .limit(1);[cite: 5]
 
-        if (fetchErr) throw fetchErr;
+        if (fetchErr) throw fetchErr;[cite: 5]
 
-        if (existingPlayers && existingPlayers.length > 0) {
-          const record = existingPlayers[0];
-          if (finalScore > record.score) {
-            const { error: updateErr } = await supabaseClient
-              .from("leaderboard")
-              .update({
-                score: finalScore,
-                created_at: new Date().toISOString()
+        if (existingPlayers && existingPlayers.length > 0) {[cite: 5]
+          const record = existingPlayers[0];[cite: 5]
+          if (finalScore > record.score) {[cite: 5]
+            const { error: updateErr } = await supabaseClient[cite: 5]
+              .from("leaderboard")[cite: 5]
+              .update({[cite: 5]
+                score: finalScore,[cite: 5]
+                created_at: new Date().toISOString()[cite: 5]
               })
-              .eq("id", record.id);
+              .eq("id", record.id);[cite: 5]
 
-            if (updateErr) throw updateErr;
+            if (updateErr) throw updateErr;[cite: 5]
           }
-          return true;
+          return true;[cite: 5]
         } else {
-          const { error: insertErr } = await supabaseClient
-            .from("leaderboard")
-            .insert([
-              { name: cleanName, score: finalScore }
+          const { error: insertErr } = await supabaseClient[cite: 5]
+            .from("leaderboard")[cite: 5]
+            .insert([[cite: 5]
+              { name: cleanName, score: finalScore }[cite: 5]
             ]);
 
-          if (insertErr) throw insertErr;
-          return true;
+          if (insertErr) throw insertErr;[cite: 5]
+          return true;[cite: 5]
         }
       } catch (err) {
-        console.error("Lỗi khi lưu điểm:", err);
-        return false;
+        console.error("Lỗi khi lưu điểm:", err);[cite: 4]
+        return false;[cite: 4]
       }
     }
 
     async function renderLeaderboardTable() {
-      const list = await fetchCloudLeaderboard();
-      if (list.length === 0) {
-        return `<p style="color: #64748b; text-align: center; margin: 1rem 0;">Chưa có kỷ lục nào được ghi nhận.</p>`;
+      const list = await fetchCloudLeaderboard();[cite: 4]
+      if (list.length === 0) {[cite: 4]
+        return `<p style="color: #64748b; text-align: center; margin: 1rem 0;">Chưa có kỷ lục nào được ghi nhận.</p>`;[cite: 4]
       }
 
-      let rows = list.map((item, index) => {
-        const dateStr = new Date(item.created_at).toLocaleDateString("vi-VN");
+      let rows = list.map((item, index) => {[cite: 4]
+        const dateStr = new Date(item.created_at).toLocaleDateString("vi-VN");[cite: 4]
         let medal = `#${index + 1}`;
         if (index === 0) medal = "🥇 #1";
         if (index === 1) medal = "🥈 #2";
@@ -705,7 +705,7 @@
             <td style="color: #94a3b8; font-size: 0.85rem;">${dateStr}</td>
           </tr>
         `;
-      }).join("");
+      }).join("");[cite: 4]
 
       return `
         <table class="leaderboard-table">
@@ -719,12 +719,12 @@
           </thead>
           <tbody>${rows}</tbody>
         </table>
-      `;
+      `;[cite: 4]
     }
 
     async function showGameOverScreen(correctTitle) {
-      const card = document.getElementById("game-card");
-      const badgeImgUrl = getScoreImage(score);
+      const card = document.getElementById("game-card");[cite: 4]
+      const badgeImgUrl = getScoreImage(score);[cite: 4]
 
       card.innerHTML = `
         <div class="game-over-header">HẾT GIỜ RỒI!</div>
@@ -756,36 +756,36 @@
         </div>
 
         <button class="btn-restart" onclick="location.reload()">Đấu lại ván mới</button>
-      `;
+      `;[cite: 4]
 
       // Fetch and show top scores
-      document.getElementById("board-container").innerHTML = await renderLeaderboardTable();
+      document.getElementById("board-container").innerHTML = await renderLeaderboardTable();[cite: 4]
     }
 
     async function handleSaveScore() {
-      const nameInput = document.getElementById("player-name");
-      const saveBtn = document.getElementById("btn-save-action");
-      const name = nameInput.value;
+      const nameInput = document.getElementById("player-name");[cite: 4]
+      const saveBtn = document.getElementById("btn-save-action");[cite: 4]
+      const name = nameInput.value;[cite: 4]
 
-      saveBtn.disabled = true;
-      saveBtn.textContent = "...";
+      saveBtn.disabled = true;[cite: 4]
+      saveBtn.textContent = "...";[cite: 4]
 
-      const success = await saveScoreToCloud(name, score);
-      if (success) {
+      const success = await saveScoreToCloud(name, score);[cite: 4]
+      if (success) {[cite: 4]
         document.getElementById("save-section").innerHTML = `
           <p style="text-align: center; color: #0284c7; font-weight: 700; margin-bottom: 1.25rem;">
             Đã đồng bộ điểm số lên đám mây thành công!
           </p>
         `;
-        document.getElementById("board-container").innerHTML = await renderLeaderboardTable();
+        document.getElementById("board-container").innerHTML = await renderLeaderboardTable();[cite: 4]
       } else {
-        alert("Không thể lưu điểm lên database. Vui lòng kiểm tra lại kết nối hoặc Supabase keys.");
-        saveBtn.disabled = false;
-        saveBtn.textContent = "Lưu";
+        alert("Không thể lưu điểm lên database. Vui lòng kiểm tra lại kết nối hoặc Supabase keys.");[cite: 4]
+        saveBtn.disabled = false;[cite: 4]
+        saveBtn.textContent = "Lưu";[cite: 4]
       }
     }
 
-    nextTurn();
+    nextTurn();[cite: 4]
   </script>
 </body>
 </html>
