@@ -969,6 +969,7 @@
     }
 
     // --- GAME OVER & ANSWER REVIEW SCREEN ---
+    // --- GAME OVER & ANSWER REVIEW SCREEN ---
     async function showGameOverScreen(correctTitle, isVictory = false) {
       const card = document.getElementById("game-card");
       const badgeImgUrl = getScoreImage(score);
@@ -1014,17 +1015,6 @@
 
         <div class="score-summary">${score} Điểm</div>
 
-        <!-- Review Answered Questions -->
-        <div class="history-card">
-          <div class="history-title">
-            <span>📝 CÁC CÂU ĐÃ TRẢ LỜI (${answeredHistory.length})</span>
-            <span style="font-size: 0.85rem; color: #64748b;">${answeredHistory.filter(h => h.isCorrect).length} Đúng / ${answeredHistory.length}</span>
-          </div>
-          <div class="history-list">
-            ${historyItemsHtml}
-          </div>
-        </div>
-
         <div id="save-section">
           <div class="name-input-group">
             <input type="text" id="player-name" placeholder="Nhập tên của bạn để lưu điểm" maxlength="20" />
@@ -1040,12 +1030,23 @@
           <p style="text-align: center; color: #94a3b8; margin: 1rem 0;">Đang tải bảng điểm...</p>
         </div>
 
-        <button class="btn-restart" onclick="startGame()">Đấu lại ván mới</button>
+        <button class="btn-restart" style="margin-bottom: 1.5rem;" onclick="startGame()">Đấu lại ván mới</button>
+
+        <!-- Review Answered Questions (Moved to the bottom) -->
+        <div class="history-card" style="margin-bottom: 0;">
+          <div class="history-title">
+            <span>📝 CÁC CÂU ĐÃ TRẢ LỜI (${answeredHistory.length})</span>
+            <span style="font-size: 0.85rem; color: #64748b;">${answeredHistory.filter(h => h.isCorrect).length} Đúng / ${answeredHistory.length}</span>
+          </div>
+          <div class="history-list">
+            ${historyItemsHtml}
+          </div>
+        </div>
       `;
 
       document.getElementById("board-container").innerHTML = await renderLeaderboardTable();
     }
-
+    
     async function handleSaveScore() {
       const nameInput = document.getElementById("player-name");
       const saveBtn = document.getElementById("btn-save-action");
