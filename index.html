@@ -503,14 +503,14 @@
     // 8 Tier Rank Badges
     function getScoreImage(finalScore) {
       const tiers = [
-        { threshold: 100, img: "./Image/Rank_100.png" },
-        { threshold: 200, img: "./Image/Rank_200.png" },
-        { threshold: 300, img: "./Image/Rank_300.png" },
-        { threshold: 400, img: "./Image/Rank_400.png" },
-        { threshold: 500, img: "./Image/Rank_500.png" },
-        { threshold: 600, img: "./Image/Rank_600.png" },
-        { threshold: 700, img: "./Image/Rank_700.png" },
-        { threshold: 800, img: "./Image/Rank_800.png" }
+        { threshold: 100, img: "./Image/Rank_100.webp" },
+        { threshold: 200, img: "./Image/Rank_200.webp" },
+        { threshold: 300, img: "./Image/Rank_300.webp" },
+        { threshold: 400, img: "./Image/Rank_400.webp" },
+        { threshold: 500, img: "./Image/Rank_500.webp" },
+        { threshold: 600, img: "./Image/Rank_600.webp" },
+        { threshold: 700, img: "./Image/Rank_700.webp" },
+        { threshold: 800, img: "./Image/Rank_800.webp" }
       ];
 
       for (const tier of tiers) {
@@ -518,7 +518,7 @@
           return tier.img;
         }
       }
-      return "./Image/Rank_800.png";
+      return "./Image/Rank_800.webp";
     }
 
     function getRandomElement(arr) {
