@@ -257,14 +257,18 @@
       letter-spacing: -0.02em;
     }
 
-    .name-input-group {
+.name-input-group {
       display: flex;
-      gap: 0.6rem;
+      flex-direction: column; /* Stacks the button beneath the input */
+      gap: 0.75rem;
       margin-bottom: 1.5rem;
+      width: 100%;
     }
+
     input[type="text"] {
-      flex: 1;
-      padding: 0.9rem 1.1rem;
+      width: 100%; /* Ensures it stays within the card container */
+      box-sizing: border-box;
+      padding: 0.95rem 1.1rem;
       border-radius: 14px;
       border: 3px solid #cbd5e1;
       background: #f8fafc;
@@ -280,21 +284,27 @@
     }
 
     .btn-save {
+      width: 100%; /* Full-width button matching the textbox */
+      box-sizing: border-box;
       background: var(--kahoot-green);
-      box-shadow: 0 4px 0 var(--kahoot-green-dark);
+      box-shadow: 0 5px 0 var(--kahoot-green-dark);
       color: #fff;
       border: none;
-      padding: 0 1.6rem;
+      padding: 1rem 1.5rem;
       border-radius: 14px;
       font-family: inherit;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 900;
       cursor: pointer;
-      transition: transform 0.08s;
+      letter-spacing: 0.02em;
+      transition: transform 0.08s, box-shadow 0.08s, filter 0.15s;
+    }
+    .btn-save:hover {
+      filter: brightness(1.08);
     }
     .btn-save:active {
       transform: translateY(3px);
-      box-shadow: 0 1px 0 var(--kahoot-green-dark);
+      box-shadow: 0 2px 0 var(--kahoot-green-dark);
     }
 
     .leaderboard-title {
@@ -306,7 +316,13 @@
       justify-content: space-between;
       align-items: center;
     }
-
+    
+    #board-container {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    
     .leaderboard-table {
       width: 100%;
       border-collapse: separate;
@@ -713,7 +729,7 @@
         </div>
 
         <div class="leaderboard-title">
-          <span>🏆 BẢNG XẾP HẠNG TOÀN CẦU</span>
+          <span>🏆 BẢNG XẾP HẠNG</span>
           <span style="font-size: 0.85rem; color: #64748b;">(Top 10)</span>
         </div>
         <div id="board-container">
