@@ -65,6 +65,71 @@
       animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
+    /* Welcome Screen Styles */
+    .welcome-container {
+      text-align: center;
+      padding: 1.5rem 0.5rem;
+    }
+    .welcome-title {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--kahoot-purple);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .welcome-subtitle {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #64748b;
+      margin-bottom: 1.75rem;
+      line-height: 1.5;
+    }
+    .welcome-info-box {
+      background: #f8fafc;
+      border: 2px dashed #cbd5e1;
+      border-radius: 18px;
+      padding: 1.2rem;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+    .welcome-info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 0.6rem;
+    }
+    .welcome-info-item:last-child {
+      margin-bottom: 0;
+    }
+    .welcome-info-icon {
+      font-size: 1.3rem;
+    }
+    .btn-start {
+      width: 100%;
+      background: var(--kahoot-green);
+      box-shadow: 0 6px 0 var(--kahoot-green-dark);
+      color: #ffffff;
+      border: none;
+      padding: 1.25rem 2rem;
+      border-radius: 18px;
+      font-family: inherit;
+      font-size: 1.4rem;
+      font-weight: 900;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: transform 0.08s, filter 0.15s, box-shadow 0.08s;
+    }
+    .btn-start:hover {
+      filter: brightness(1.08);
+    }
+    .btn-start:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 var(--kahoot-green-dark);
+    }
+
     .status-bar {
       display: flex;
       justify-content: space-between;
@@ -134,6 +199,7 @@
       }
       .quiz-card { padding: 1.5rem 1.1rem; }
       .lyric-text { font-size: 1.15rem; }
+      .welcome-title { font-size: 2rem; }
     }
 
     .choice-btn {
@@ -257,16 +323,16 @@
       letter-spacing: -0.02em;
     }
 
-.name-input-group {
+    .name-input-group {
       display: flex;
-      flex-direction: column; /* Stacks the button beneath the input */
+      flex-direction: column;
       gap: 0.75rem;
       margin-bottom: 1.5rem;
       width: 100%;
     }
 
     input[type="text"] {
-      width: 100%; /* Ensures it stays within the card container */
+      width: 100%;
       box-sizing: border-box;
       padding: 0.95rem 1.1rem;
       border-radius: 14px;
@@ -284,7 +350,7 @@
     }
 
     .btn-save {
-      width: 100%; /* Full-width button matching the textbox */
+      width: 100%;
       box-sizing: border-box;
       background: var(--kahoot-green);
       box-shadow: 0 5px 0 var(--kahoot-green-dark);
@@ -305,6 +371,77 @@
     .btn-save:active {
       transform: translateY(3px);
       box-shadow: 0 2px 0 var(--kahoot-green-dark);
+    }
+
+    /* History review section */
+    .history-card {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1.1rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .history-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-height: 260px;
+      overflow-y: auto;
+      padding-right: 0.35rem;
+    }
+    .history-item {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 0.75rem 0.9rem;
+      font-size: 0.92rem;
+      border-left: 5px solid #cbd5e1;
+    }
+    .history-item.is-correct {
+      border-left-color: #10b981;
+    }
+    .history-item.is-wrong {
+      border-left-color: #ef4444;
+    }
+    .history-q {
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.35rem;
+      line-height: 1.4;
+    }
+    .history-ans-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .history-picked {
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+    }
+    .history-picked.correct-pill {
+      background: #dcfce7;
+      color: #15803d;
+    }
+    .history-picked.wrong-pill {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+    .history-actual {
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
     }
 
     .leaderboard-title {
@@ -392,30 +529,12 @@
 </head>
 <body>
 
-  <div class="quiz-card" id="game-card">
-    <div class="status-bar">
-      <div class="pill-badge score-badge">
-        <span>⭐ ĐIỂM:</span> <span id="score-val">0</span>
-      </div>
-      <div class="pill-badge streak-badge" id="streak-val">
-        🔥 CHUỖI: 0
-      </div>
-    </div>
-
-    <div class="quote-box">
-      <div class="quote-label">🎵 Câu hát này nằm trong bài hát nào?</div>
-      <div class="lyric-text" id="lyric-display">"..."</div>
-    </div>
-
-    <div class="options-grid" id="options-box"></div>
-  </div>
+  <div class="quiz-card" id="game-card"></div>
 
   <script>
-    // --- 1. CONFIGURE YOUR SUPABASE CREDENTIALS HERE ---
+    // --- 1. SUPABASE CREDENTIALS ---
     const SUPABASE_URL = "https://valdbdkrbmnjsugyyfms.supabase.co";
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZhbGRiZGtyYm1uanN1Z3l5Zm1zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM4MzIzMzMsImV4cCI6MjEwOTQwODMzM30.JeGV6p4esHmkHZAjP-yIT8JHt1xiXN5Gl705xJHnrYg";
-
-    // Initialize Supabase Client
     const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     // --- 2. SONG DATABASE (15 Tracks) ---
@@ -512,9 +631,41 @@
     };
 
     const allTrackNames = Object.keys(songDatabase);
+
+    // Preload all badge images silently in the background
+    const rankImagePaths = [
+      "./Image/Rank_100.webp",
+      "./Image/Rank_200.webp",
+      "./Image/Rank_300.webp",
+      "./Image/Rank_400.webp",
+      "./Image/Rank_500.webp",
+      "./Image/Rank_600.webp",
+      "./Image/Rank_700.webp",
+      "./Image/Rank_800.webp"
+    ];
+    rankImagePaths.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+
+    // --- GAME STATE VARIABLES ---
     let score = 0;
     let streak = 0;
-    let lastLyric = "";
+    let questionPool = []; // Pool of all available { track, line } pairs without duplicates
+    let answeredHistory = []; // Tracks every question answered in this round
+
+    // Build the non-repeating question pool
+    function initQuestionPool() {
+      questionPool = [];
+      answeredHistory = [];
+      allTrackNames.forEach(track => {
+        songDatabase[track].forEach(line => {
+          questionPool.push({ track, line });
+        });
+      });
+      // Shuffle question pool randomly
+      questionPool.sort(() => 0.5 - Math.random());
+    }
 
     // 8 Tier Rank Badges
     function getScoreImage(finalScore) {
@@ -537,23 +688,82 @@
       return "./Image/Rank_800.webp";
     }
 
-    function getRandomElement(arr) {
-      return arr[Math.floor(Math.random() * arr.length)];
+    // --- WELCOME SCREEN ---
+    function showWelcomeScreen() {
+      const card = document.getElementById("game-card");
+      card.innerHTML = `
+        <div class="welcome-container">
+          <div class="welcome-title">🎵 GUESS THE SONG</div>
+          <p class="welcome-subtitle">Thử thách trí nhớ lời bài hát Anh Trai "Say Hi"!</p>
+
+          <div class="welcome-info-box">
+            <div class="welcome-info-item">
+              <span class="welcome-info-icon">🎯</span>
+              <span>Đoán đúng bài hát từ từng câu lời bài hát ngẫu nhiên.</span>
+            </div>
+            <div class="welcome-info-item">
+              <span class="welcome-info-icon">🚫</span>
+              <span>Mỗi câu hỏi chỉ xuất hiện duy nhất 1 lần mỗi ván đấu.</span>
+            </div>
+            <div class="welcome-info-item">
+              <span class="welcome-info-icon">🔥</span>
+              <span>10 điểm mỗi câu đúng. Sai 1 câu là dừng cuộc chơi!</span>
+            </div>
+            <div class="welcome-info-item">
+              <span class="welcome-info-icon">🏆</span>
+              <span>Mở khóa huy hiệu độc quyền và ghi danh bảng xếp hạng.</span>
+            </div>
+          </div>
+
+          <button class="btn-start" onclick="startGame()">BẮT ĐẦU CHƠI</button>
+        </div>
+      `;
     }
 
-    function nextTurn() {
-      const playableTracks = allTrackNames.filter(name => songDatabase[name].length > 0);
-      const targetTrack = getRandomElement(playableTracks);
-      const lines = songDatabase[targetTrack];
+    // --- START GAME ---
+    function startGame() {
+      score = 0;
+      streak = 0;
+      initQuestionPool();
 
-      let chosenLine = "";
-      do {
-        chosenLine = getRandomElement(lines);
-      } while (chosenLine === lastLyric && lines.length > 1);
-      lastLyric = chosenLine;
+      const card = document.getElementById("game-card");
+      card.innerHTML = `
+        <div class="status-bar">
+          <div class="pill-badge score-badge">
+            <span>⭐ ĐIỂM:</span> <span id="score-val">0</span>
+          </div>
+          <div class="pill-badge streak-badge" id="streak-val">
+            🔥 CHUỖI: 0
+          </div>
+        </div>
+
+        <div class="quote-box">
+          <div class="quote-label">🎵 Câu hát này nằm trong bài hát nào?</div>
+          <div class="lyric-text" id="lyric-display">"..."</div>
+        </div>
+
+        <div class="options-grid" id="options-box"></div>
+      `;
+
+      nextTurn();
+    }
+
+    // --- NEXT QUESTION TURN ---
+    function nextTurn() {
+      // If all questions are answered, end with victory
+      if (questionPool.length === 0) {
+        showGameOverScreen(null, true);
+        return;
+      }
+
+      // Pop the next unique question from the shuffled pool
+      const currentQ = questionPool.pop();
+      const targetTrack = currentQ.track;
+      const chosenLine = currentQ.line;
 
       document.getElementById("lyric-display").textContent = `"${chosenLine}"`;
 
+      // Generate 3 unique distractors
       const otherTracks = allTrackNames.filter(name => name !== targetTrack);
       const distractors = otherTracks.sort(() => 0.5 - Math.random()).slice(0, 3);
       const choices = [...distractors, targetTrack].sort(() => 0.5 - Math.random());
@@ -566,16 +776,27 @@
         btn.className = "choice-btn";
         btn.dataset.track = trackTitle;
         btn.textContent = trackTitle;
-        btn.onclick = () => handlePick(btn, trackTitle, targetTrack);
+        btn.onclick = () => handlePick(btn, trackTitle, targetTrack, chosenLine);
         container.appendChild(btn);
       });
     }
 
-    function handlePick(selectedBtn, chosenTitle, correctTitle) {
+    // --- HANDLE ANSWER SELECTION ---
+    function handlePick(selectedBtn, chosenTitle, correctTitle, lyricLine) {
       const buttons = document.querySelectorAll(".choice-btn");
       buttons.forEach(b => (b.disabled = true));
 
-      if (chosenTitle === correctTitle) {
+      const isCorrect = (chosenTitle === correctTitle);
+
+      // Save question to history
+      answeredHistory.push({
+        line: lyricLine,
+        picked: chosenTitle,
+        correct: correctTitle,
+        isCorrect: isCorrect
+      });
+
+      if (isCorrect) {
         selectedBtn.classList.add("correct");
         buttons.forEach(b => {
           if (b !== selectedBtn) {
@@ -602,7 +823,7 @@
         });
 
         setTimeout(() => {
-          showGameOverScreen(correctTitle);
+          showGameOverScreen(correctTitle, false);
         }, 1200);
       }
     }
@@ -704,22 +925,62 @@
       `;
     }
 
-    async function showGameOverScreen(correctTitle) {
+    // --- GAME OVER & ANSWER REVIEW SCREEN ---
+    async function showGameOverScreen(correctTitle, isVictory = false) {
       const card = document.getElementById("game-card");
       const badgeImgUrl = getScoreImage(score);
 
-      card.innerHTML = `
-        <div class="game-over-header">Sai Gòi</div>
-        
+      // Render Question History List
+      let historyItemsHtml = "";
+      if (answeredHistory.length > 0) {
+        historyItemsHtml = answeredHistory.map((item, idx) => {
+          const statusClass = item.isCorrect ? "is-correct" : "is-wrong";
+          const icon = item.isCorrect ? "✅" : "❌";
+          const pillClass = item.isCorrect ? "correct-pill" : "wrong-pill";
+
+          return `
+            <div class="history-item ${statusClass}">
+              <div class="history-q">${icon} <strong>Câu ${idx + 1}:</strong> "${item.line}"</div>
+              <div class="history-ans-row">
+                <span class="history-picked ${pillClass}">Bạn chọn: ${item.picked}</span>
+                ${!item.isCorrect ? `<span class="history-actual">Đáp án đúng: ${item.correct}</span>` : ""}
+              </div>
+            </div>
+          `;
+        }).join("");
+      } else {
+        historyItemsHtml = `<p style="color: #94a3b8; text-align: center; font-size: 0.9rem;">Chưa có câu trả lời nào.</p>`;
+      }
+
+      const headerText = isVictory ? "XUẤT SẮC! BẠN ĐÃ CHIẾN THẮNG!" : "SAI GÒI!";
+      const headerColor = isVictory ? "var(--kahoot-green)" : "var(--kahoot-red)";
+      const answerBanner = (!isVictory && correctTitle) ? `
         <div class="correct-answer-banner">
-          Đáp án đúng: <strong>${correctTitle}</strong>
+          Đáp án đúng câu vừa rồi: <strong>${correctTitle}</strong>
         </div>
+      ` : "";
+
+      card.innerHTML = `
+        <div class="game-over-header" style="color: ${headerColor};">${headerText}</div>
+        
+        ${answerBanner}
 
         <div class="rank-badge-container">
           <img src="${badgeImgUrl}" alt="Rank Badge" class="rank-badge-img" onerror="this.style.display='none'" />
         </div>
 
         <div class="score-summary">${score} Điểm</div>
+
+        <!-- Review Answered Questions -->
+        <div class="history-card">
+          <div class="history-title">
+            <span>📝 CÁC CÂU ĐÃ TRẢ LỜI (${answeredHistory.length})</span>
+            <span style="font-size: 0.85rem; color: #64748b;">${answeredHistory.filter(h => h.isCorrect).length} Đúng / ${answeredHistory.length}</span>
+          </div>
+          <div class="history-list">
+            ${historyItemsHtml}
+          </div>
+        </div>
 
         <div id="save-section">
           <div class="name-input-group">
@@ -736,7 +997,7 @@
           <p style="text-align: center; color: #94a3b8; margin: 1rem 0;">Đang tải bảng điểm...</p>
         </div>
 
-        <button class="btn-restart" onclick="location.reload()">Đấu lại ván mới</button>
+        <button class="btn-restart" onclick="startGame()">Đấu lại ván mới</button>
       `;
 
       document.getElementById("board-container").innerHTML = await renderLeaderboardTable();
@@ -765,8 +1026,8 @@
       }
     }
 
-    // Start quiz
-    nextTurn();
+    // Initialize with Welcome Screen
+    showWelcomeScreen();
   </script>
 </body>
 </html>
