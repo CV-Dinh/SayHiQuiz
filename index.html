@@ -104,12 +104,31 @@
       color: #ef4444;
       margin-bottom: 0.5rem;
     }
+    .rank-badge-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1.25rem auto 0.5rem auto;
+    }
+    .rank-badge-img {
+      width: 240px;
+      height: 240px;
+      max-width: 100%;
+      object-fit: contain;
+      border-radius: 14px;
+      filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.6));
+      animation: popIn 0.4s ease-out;
+    }
+    @keyframes popIn {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
     .score-summary {
       text-align: center;
       font-size: 2.75rem;
       font-weight: 900;
       color: #38bdf8;
-      margin: 0.75rem 0 1.25rem 0;
+      margin: 0.5rem 0 1.25rem 0;
     }
     .name-input-group {
       display: flex;
@@ -194,8 +213,8 @@
 
   <script>
     // --- 1. CONFIGURE YOUR SUPABASE CREDENTIALS HERE ---
-const SUPABASE_URL = "https://valdbdkrbmnjsugyyfms.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZhbGRiZGtyYm1uanN1Z3l5Zm1zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM4MzIzMzMsImV4cCI6MjEwOTQwODMzM30.JeGV6p4esHmkHZAjP-yIT8JHt1xiXN5Gl705xJHnrYg";
+    const SUPABASE_URL = "https://valdbdkrbmnjsugyyfms.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZhbGRiZGtyYm1uanN1Z3l5Zm1zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM4MzIzMzMsImV4cCI6MjEwOTQwODMzM30.JeGV6p4esHmkHZAjP-yIT8JHt1xiXN5Gl705xJHnrYg";
 
     // Initialize Supabase Client
     const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -209,12 +228,9 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
         "Lòng không yên mỗi khi thấy em thờ ơ",
         "Đừng mặc anh dưới mưa buồn rơi ướt áo",
         "Nếu yêu em là điều dại dột thì con tim anh muốn sai",
-"Người còn định dỗi anh đến bao giờ, xuống đây đi anh chờ",
-"Lòng không yên mỗi khi thấy em thờ ơ",
-"Người vờn anh trong những lo sợ, ngổn ngang những nghi ngờ",
-"Mình mập mờ với nhau đến khi nào, hé ra cho anh vào",
-"Đừng mặc anh dưới mưa buồn rơi ướt áo",
-"Lỡ sau hôm nay ta quên nhau thì sao"
+        "Người vờn anh trong những lo sợ, ngổn ngang những nghi ngờ",
+        "Mình mập mờ với nhau đến khi nào, hé ra cho anh vào",
+        "Lỡ sau hôm nay ta quên nhau thì sao"
       ],
       "Catch Me If You Can": [
         "Quay lưng sang đã thấy người đi",
@@ -227,71 +243,70 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
         "Catch me if you can, đuổi theo anh nếu em làm được"
       ],
       "Laviem": [
-       "Trái tim anh chẳng còn cần thiết nữa, nói chi đến đây cũng thừa",
-"Rượu vang pha với cơn mưa",
-"Hàng trăm lý do cũng chẳng thể cứu vãn",
-"Biết sao hết cho vừa lòng nhau mới thấu đây em",
-"Dệt hàng triệu vết thương, tự vùi mình trước gương",
-"Nhìn một người đã từng thương sao nay xa lạ đến bất thường",
-"Cố gắng cũng chỉ bằng không, nước mắt ngược dòng",
-"Chảy ngược tận sâu bên trong nghẹn đắng nơi lồng ngực"
+        "Trái tim anh chẳng còn cần thiết nữa, nói chi đến đây cũng thừa",
+        "Rượu vang pha với cơn mưa",
+        "Hàng trăm lý do cũng chẳng thể cứu vãn",
+        "Biết sao hết cho vừa lòng nhau mới thấu đây em",
+        "Dệt hàng triệu vết thương, tự vùi mình trước gương",
+        "Nhìn một người đã từng thương sao nay xa lạ đến bất thường",
+        "Cố gắng cũng chỉ bằng không, nước mắt ngược dòng",
+        "Chảy ngược tận sâu bên trong nghẹn đắng nơi lồng ngực"
       ],
       "Xoay Vòng": [
         "Phải xoay vòng, xoay vòng, xoay vòng đến bao giờ",
-"Chạy theo ngay sau mà sao em cứ xa mờ",
-"Buông anh nơi chơi vơi để những mong chờ",
-"Chôn anh trong bao đêm cô đơn anh chỉ ước đây là mơ",
-"Nên thôi đừng nhìn anh nữa",
-"Vì anh biết anh lại chìm vào mắt em",
-"Thôi đừng ôm anh nữa, ah-ah",
-"Vì đôi tay đó sẽ khiến anh yếu mềm, yếu thêm, lại yêu em"
+        "Chạy theo ngay sau mà sao em cứ xa mờ",
+        "Buông anh nơi chơi vơi để những mong chờ",
+        "Chôn anh trong bao đêm cô đơn anh chỉ ước đây là mơ",
+        "Nên thôi đừng nhìn anh nữa",
+        "Vì anh biết anh lại chìm vào mắt em",
+        "Thôi đừng ôm anh nữa, ah-ah",
+        "Vì đôi tay đó sẽ khiến anh yếu mềm, yếu thêm, lại yêu em"
       ],
       "Tình Đầu Quá Chén": [
-       "Mối tình đầu quá trớn, ta nên dừng",
-"Từng ngàn câu hứa phôi phai, giờ này người đang nhấp môi ai?",
-"Nỗi đau này quá lớn, anh chưa từng",
-"Vậy thì tại sao? (Ah-ah-ah-ah)",
-"Mối tình đầu quá trớn, ai cũng từng",
-"Từng là từng ôm gối bên nhau giờ lại tặng nhau vết thương sâu",
-"Nỗi nhớ này quá lớn, xin em đừng dằn vặt tim anh",
-"Vậy thôi kết thúc cho nhanh!",
-"Thế nên đừng làm quá trớn, đừng làm quá trớn chuyện gì",
-"Từng lời nói nên nhẹ nhàng, thấm thía, chuyện buồn dễ đến rồi đi",
-"Đừng hoang mang, thêm u sầu, nhức hết cả đầu",
-"Thay vì ngồi đó hứng buồn rầu",
-"Hãy mang câu ca này xóa hết đi"
+        "Mối tình đầu quá trớn, ta nên dừng",
+        "Từng ngàn câu hứa phôi phai, giờ này người đang nhấp môi ai?",
+        "Nỗi đau này quá lớn, anh chưa từng",
+        "Mối tình đầu quá trớn, ai cũng từng",
+        "Từng là từng ôm gối bên nhau giờ lại tặng nhau vết thương sâu",
+        "Nỗi nhớ này quá lớn, xin em đừng dằn vặt tim anh",
+        "Vậy thôi kết thúc cho nhanh!",
+        "Thế nên đừng làm quá trớn, đừng làm quá trớn chuyện gì",
+        "Từng lời nói nên nhẹ nhàng, thấm thía, chuyện buồn dễ đến rồi đi",
+        "Đừng hoang mang, thêm u sầu, nhức hết cả đầu",
+        "Thay vì ngồi đó hứng buồn rầu",
+        "Hãy mang câu ca này xóa hết đi"
       ],
       "Hermosa": [
         "Hola hermosa, tựa như tranh vẽ",
-"Làm cho trái tim anh rung động không ngừng, hằng đêm thao thức",
-"Từ khi thấy em anh chỉ muốn nói là đừng đi nhanh quá ", 
-"Đừng vội vàng xa rời đôi mắt anh đang si tình",
-"Muốn bên em đi khắp thế gian này"
+        "Làm cho trái tim anh rung động không ngừng, hằng đêm thao thức",
+        "Từ khi thấy em anh chỉ muốn nói là đừng đi nhanh quá", 
+        "Đừng vội vàng xa rời đôi mắt anh đang si tình",
+        "Muốn bên em đi khắp thế gian này"
       ],
       "MRT": [
-       "Cả đời này anh nợ em lời xin lỗi, khi tình yêu dần lạc lối",
-"Anh biết anh chẳng giữ được đâu",
-"Anh không muốn thêm một lần nhìn em khóc",
-"Nên anh sẽ tự mình mang theo bao tiếc nuối",
-"Đoàn tàu lăn bánh chia đôi cả thế giới, hai người hai khoảng trời mới",
-"Mong cho em về nơi ánh dương ngập tràn",
-"Có lẽ quá muộn màng, ta đã lỡ lạc nhau thật rồi"
+        "Cả đời này anh nợ em lời xin lỗi, khi tình yêu dần lạc lối",
+        "Anh biết anh chẳng giữ được đâu",
+        "Anh không muốn thêm một lần nhìn em khóc",
+        "Nên anh sẽ tự mình mang theo bao tiếc nuối",
+        "Đoàn tàu lăn bánh chia đôi cả thế giới, hai người hai khoảng trời mới",
+        "Mong cho em về nơi ánh dương ngập tràn",
+        "Có lẽ quá muộn màng, ta đã lỡ lạc nhau thật rồi"
       ],
       "Kim Phút, Kim Giờ": [
-       "Mình phải chia tay thật sao? Còn nhiều lời hứa từng trao",
-"Giờ đây anh phải thế nào? Đứng nhìn em cùng người ta sao?",
-"Chẳng muốn phải ôm khát vọng, rồi lỡ buông tay bỏ mặc em ở lại phía sau",
-"Ước cho kim đồng hồ kia ngừng để ta sẽ mãi đứng im",
-"Chẳng phải đuổi theo điều gì"
+        "Mình phải chia tay thật sao? Còn nhiều lời hứa từng trao",
+        "Giờ đây anh phải thế nào? Đứng nhìn em cùng người ta sao?",
+        "Chẳng muốn phải ôm khát vọng, rồi lỡ buông tay bỏ mặc em ở lại phía sau",
+        "Ước cho kim đồng hồ kia ngừng để ta sẽ mãi đứng im",
+        "Chẳng phải đuổi theo điều gì"
       ],
       "Thế Giới Của Anh": [
-"Khi anh buông cả thế giới, em mang nụ cười đến với",
-"Đợi anh như mơ, êm đềm như thơ",
-"Là em đã sưởi ấm hy vọng trong trái tim anh",
-"Cho ta thêm một thế giới, cùng nhau",
-"Đan chặt từng ước ao, cảm xúc dâng trào",
-"Anh đã tin vào tình yêu, giây phút ấy rực rỡ hơn bao điều"
-  ],
+        "Khi anh buông cả thế giới, em mang nụ cười đến với",
+        "Đợi anh như mơ, êm đềm như thơ",
+        "Là em đã sưởi ấm hy vọng trong trái tim anh",
+        "Cho ta thêm một thế giới, cùng nhau",
+        "Đan chặt từng ước ao, cảm xúc dâng trào",
+        "Anh đã tin vào tình yêu, giây phút ấy rực rỡ hơn bao điều"
+      ],
       "Sao Hạng A": [
         "Thề là thấy em giây đầu tiên, anh đã muốn đưa em lên thuyền",
         "Baby bấy lâu nay ở đâu? Sao giờ mới được nhìn thấy nhau?",
@@ -300,45 +315,43 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
       ],
       "Dancin' My Way": [
         "Gạt nỗi lo đi, cầm lấy tay anh baby, dancin' my own way",
-        "Ngàn câu ca đang thay anh nói lời yêu", 
-	"(Tận sâu trái tim anh này)",
+        "Ngàn câu ca đang thay anh nói lời yêu (Tận sâu trái tim anh này)",
         "Lạc giữa tinh hà, chỉ có riêng ta mình cùng khiêu vũ trong đêm nay",
         "Theo nhịp đôi chân cứ đắm say"
       ],
       "Love Sand": [
-"Giờ thì ta chỉ cần cùng nhắm mắt, đan tay",
-"Ôm lấy nhau thật lâu không rời, mình sẽ có với nhau giây phút tuyệt vời",
-"Nằm dưới cát đêm nay, bao thứ kia trên đời chẳng cần gì khi đã có em rồi"
+        "Giờ thì ta chỉ cần cùng nhắm mắt, đan tay",
+        "Ôm lấy nhau thật lâu không rời, mình sẽ có với nhau giây phút tuyệt vời",
+        "Nằm dưới cát đêm nay, bao thứ kia trên đời chẳng cần gì khi đã có em rồi"
       ],
       "Thêu Hoa Dệt Gấm": [
         "Như trăng với sao tình tứ cho nhau",
         "À ơi, thêu hoa dệt gấm",
-        "Ngập tràn bao ánh dương nhẹ",
-        "ôm lấy nơi trái tim anh lâu ngày",
-"Khi dáng em nhẹ bước qua đây",
-"Ngàn hoa thơm ngát hương nguyện đan lót trong gấm nhung như thêu thùa",
-"May mối duyên mình giữ trong tay"
+        "Ngập tràn bao ánh dương nhẹ ôm lấy nơi trái tim anh lâu ngày",
+        "Khi dáng em nhẹ bước qua đây",
+        "Ngàn hoa thơm ngát hương nguyện đan lót trong gấm nhung như thêu thùa",
+        "May mối duyên mình giữ trong tay"
       ],
       "50 Cuộc Gọi Nhỡ": [
         "Là hàng triệu nỗi nhớ anh đem chôn giấu trong nơi màn đêm",
-"Là từng cuộc gọi nhỡ không ai bắt máy, năm mươi lần đếm",
-"Với anh đáng sợ đó là khi nghe tiếng chuông reo",
-"Thường là nỗi buồn bấy lâu nay mang theo, lại liên hồi rung lên",
-"Giờ chỉ mình anh đếm thôi, chạy bao lâu mới đến nơi?",
-"Để kịp hẹn cùng hạnh phúc bấy lâu anh chẳng dám đối diện",
-"Năm mươi cuộc gọi giờ thay cho đáp án cuối cùng",
-"Chọn khóc thay cho cười, chọn kết thúc một nỗi đau"
+        "Là từng cuộc gọi nhỡ không ai bắt máy, năm mươi lần đếm",
+        "Với anh đáng sợ đó là khi nghe tiếng chuông reo",
+        "Thường là nỗi buồn bấy lâu nay mang theo, lại liên hồi rung lên",
+        "Giờ chỉ mình anh đếm thôi, chạy bao lâu mới đến nơi?",
+        "Để kịp hẹn cùng hạnh phúc bấy lâu anh chẳng dám đối diện",
+        "Năm mươi cuộc gọi giờ thay cho đáp án cuối cùng",
+        "Chọn khóc thay cho cười, chọn kết thúc một nỗi đau"
       ],
       "Mộng Duyên": [
         "Mộng duyên giữa đôi ta, như cánh hoa nở trong đêm trăng tà",
-"Tình yêu đến bên ta, nhưng chóng phai ngỡ như đoá Quỳnh Hoa",
-"Là tiên nữ nơi đâu, hương sắc theo dấu ta đến tiêu sầu",
-"Ngả nghiêng xiêu lòng say đắm muốn ngắm nhìn thật lâu",
-"Mộng duyên suốt năm canh, mong dáng ai muốn buông chẳng nỡ đành",
-"Gà gáy suốt đêm thanh, như cũng đang thấu cho nỗi lòng anh",
-"Ngày cứ thế trôi nhanh, lưu luyến ai mải mê đến hiu quạnh",
-"Hồn ta như lạc trong chốn nhân gian này",
-"Chẳng mong có ai thấu được lòng anh"
+        "Tình yêu đến bên ta, nhưng chóng phai ngỡ như đoá Quỳnh Hoa",
+        "Là tiên nữ nơi đâu, hương sắc theo dấu ta đến tiêu sầu",
+        "Ngả nghiêng xiêu lòng say đắm muốn ngắm nhìn thật lâu",
+        "Mộng duyên suốt năm canh, mong dáng ai muốn buông chẳng nỡ đành",
+        "Gà gáy suốt đêm thanh, như cũng đang thấu cho nỗi lòng anh",
+        "Ngày cứ thế trôi nhanh, lưu luyến ai mải mê đến hiu quạnh",
+        "Hồn ta như lạc trong chốn nhân gian này",
+        "Chẳng mong có ai thấu được lòng anh"
       ]
     };
 
@@ -346,6 +359,28 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
     let score = 0;
     let streak = 0;
     let lastLyric = "";
+
+    // 8 tiers for up to 800 points (each 100 points has its own picture)
+    // Points >= 800 will receive Rank_800.png
+    function getScoreImage(finalScore) {
+      const tiers = [
+        { threshold: 100, img: "./Image/Rank_100.png" }, // 0 - 90
+        { threshold: 200, img: "./Image/Rank_200.png" }, // 100 - 190
+        { threshold: 300, img: "./Image/Rank_300.png" }, // 200 - 290
+        { threshold: 400, img: "./Image/Rank_400.png" }, // 300 - 390
+        { threshold: 500, img: "./Image/Rank_500.png" }, // 400 - 490
+        { threshold: 600, img: "./Image/Rank_600.png" }, // 500 - 590
+        { threshold: 700, img: "./Image/Rank_700.png" }, // 600 - 690
+        { threshold: 800, img: "./Image/Rank_800.png" }  // 700 - 790
+      ];
+
+      for (const tier of tiers) {
+        if (finalScore < tier.threshold) {
+          return tier.img;
+        }
+      }
+      return "./Image/Rank_800.png"; // 800+ points
+    }
 
     function getRandomElement(arr) {
       return arr[Math.floor(Math.random() * arr.length)];
@@ -453,7 +488,6 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
             if (updateErr) throw updateErr;
           }
-          // If the new score isn't higher, the old personal best is retained
           return true;
         } else {
           // 3. New player -> Insert a new row
@@ -507,11 +541,19 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
     async function showGameOverScreen(correctTitle) {
       const card = document.getElementById("game-card");
+      const badgeImgUrl = getScoreImage(score);
+
       card.innerHTML = `
         <div class="game-over-header">BẠN ĐÃ CHỌN SAI!</div>
         <p style="text-align: center; color: #94a3b8; font-size: 0.95rem;">
           Đáp án đúng: <strong style="color: #22c55e;">${correctTitle}</strong>
         </p>
+
+        <!-- Rank badge image for each 100 points tier -->
+        <div class="rank-badge-container">
+          <img src="${badgeImgUrl}" alt="Rank Badge" class="rank-badge-img" onerror="this.style.display='none'" />
+        </div>
+
         <div class="score-summary">${score} Điểm</div>
 
         <div id="save-section">
