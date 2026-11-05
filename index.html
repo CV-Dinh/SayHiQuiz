@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Song Memory Battle - Kahoot Edition</title>
-  <!-- Load Supabase JS Client directly via CDN -->
+  <!-- Supabase JS Client -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <!-- Google Font: Nunito with full Vietnamese subset -->
+  <!-- Google Font: Nunito with full Vietnamese support -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -39,7 +39,6 @@
       overflow-x: hidden;
     }
 
-    /* Kahoot Floating Background Accents */
     body::before, body::after {
       content: "";
       position: absolute;
@@ -66,7 +65,6 @@
       animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    /* Top Stats Pills */
     .status-bar {
       display: flex;
       justify-content: space-between;
@@ -97,7 +95,6 @@
       border: 2px solid #fde68a;
     }
 
-    /* Lyric Question Prompt Box */
     .quote-box {
       background: #f8fafc;
       border: 3px solid #e2e8f0;
@@ -124,7 +121,6 @@
       color: #0f172a;
     }
 
-    /* 2x2 Chunky Buttons Grid */
     .options-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -159,7 +155,6 @@
       user-select: none;
     }
 
-    /* 4-Color Kahoot Palette */
     .choice-btn:nth-child(1) {
       background: var(--kahoot-red);
       box-shadow: 0 6px 0 var(--kahoot-red-dark);
@@ -177,7 +172,6 @@
       box-shadow: 0 6px 0 var(--kahoot-green-dark);
     }
 
-    /* Hover & Active Press */
     .choice-btn:hover:not(:disabled) {
       filter: brightness(1.08);
     }
@@ -189,7 +183,6 @@
     .choice-btn:nth-child(3):active:not(:disabled) { box-shadow: 0 2px 0 var(--kahoot-yellow-dark); }
     .choice-btn:nth-child(4):active:not(:disabled) { box-shadow: 0 2px 0 var(--kahoot-green-dark); }
 
-    /* Win / Wrong / Dimmed States */
     .choice-btn.correct {
       background: #10b981 !important;
       box-shadow: 0 6px 0 #047857 !important;
@@ -217,7 +210,6 @@
       50% { transform: scale(1.08); }
     }
 
-    /* Game Over Section */
     .game-over-header {
       text-align: center;
       font-size: 2.2rem;
@@ -305,7 +297,6 @@
       box-shadow: 0 1px 0 var(--kahoot-green-dark);
     }
 
-    /* Leaderboard */
     .leaderboard-title {
       font-size: 1.2rem;
       font-weight: 900;
@@ -405,11 +396,11 @@
 
   <script>
     // --- 1. CONFIGURE YOUR SUPABASE CREDENTIALS HERE ---
-    const SUPABASE_URL = "https://valdbdkrbmnjsugyyfms.supabase.co";[cite: 4]
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZhbGRiZGtyYm1uanN1Z3l5Zm1zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM4MzIzMzMsImV4cCI6MjEwOTQwODMzM30.JeGV6p4esHmkHZAjP-yIT8JHt1xiXN5Gl705xJHnrYg";[cite: 4]
+    const SUPABASE_URL = "https://valdbdkrbmnjsugyyfms.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZhbGRiZGtyYm1uanN1Z3l5Zm1zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM4MzIzMzMsImV4cCI6MjEwOTQwODMzM30.JeGV6p4esHmkHZAjP-yIT8JHt1xiXN5Gl705xJHnrYg";
 
     // Initialize Supabase Client
-    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);[cite: 4]
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     // --- 2. SONG DATABASE (15 Tracks) ---
     const songDatabase = {
@@ -417,86 +408,54 @@
         "Mưa, nhẹ rơi, màn đêm, mình anh phóng qua nơi em",
         "Từng hàng cây từng con phố, chờ anh chút thôi",
         "Người còn định dỗi anh đến bao giờ, xuống đây đi anh chờ",
-        "Lòng không yên mỗi khi thấy em thờ ơ",
-        "Đừng mặc anh dưới mưa buồn rơi ướt áo",
-        "Nếu yêu em là điều dại dột thì con tim anh muốn sai",
-        "Người vờn anh trong những lo sợ, ngổn ngang những nghi ngờ",
-        "Mình mập mờ với nhau đến khi nào, hé ra cho anh vào",
-        "Lỡ sau hôm nay ta quên nhau thì sao"
+        "Lòng không yên mỗi khi thấy em thờ ơ"
       ],
       "Catch Me If You Can": [
         "Quay lưng sang đã thấy người đi",
         "Chẳng còn tương lai lấp lánh như trong cơn mơ lúc em vẫn ngây thơ",
         "Bỏ anh đi làm gì không giữ lúc mất đừng tìm thôi thì ngậm cay đắng đi",
-        "Đừng vì một phút cô đơn mà tìm đến bên anh",
-        "Kiếm lấy anh để săn mồi, you're chasing behind my back",
-        "Giờ thì ai lau nước mắt em trong cơn say giữa cơn đau đọa đày?",
-        "Anh chẳng phải là game cho em chơi rồi lại quay xe",
         "Catch me if you can, đuổi theo anh nếu em làm được"
       ],
       "Laviem": [
         "Trái tim anh chẳng còn cần thiết nữa, nói chi đến đây cũng thừa",
         "Rượu vang pha với cơn mưa",
         "Hàng trăm lý do cũng chẳng thể cứu vãn",
-        "Biết sao hết cho vừa lòng nhau mới thấu đây em",
-        "Dệt hàng triệu vết thương, tự vùi mình trước gương",
-        "Nhìn một người đã từng thương sao nay xa lạ đến bất thường",
-        "Cố gắng cũng chỉ bằng không, nước mắt ngược dòng",
-        "Chảy ngược tận sâu bên trong nghẹn đắng nơi lồng ngực"
+        "Nhìn một người đã từng thương sao nay xa lạ đến bất thường"
       ],
       "Xoay Vòng": [
         "Phải xoay vòng, xoay vòng, xoay vòng đến bao giờ",
         "Chạy theo ngay sau mà sao em cứ xa mờ",
         "Buông anh nơi chơi vơi để những mong chờ",
-        "Chôn anh trong bao đêm cô đơn anh chỉ ước đây là mơ",
-        "Nên thôi đừng nhìn anh nữa",
-        "Vì anh biết anh lại chìm vào mắt em",
-        "Thôi đừng ôm anh nữa, ah-ah",
         "Vì đôi tay đó sẽ khiến anh yếu mềm, yếu thêm, lại yêu em"
       ],
       "Tình Đầu Quá Chén": [
         "Mối tình đầu quá trớn, ta nên dừng",
         "Từng ngàn câu hứa phôi phai, giờ này người đang nhấp môi ai?",
         "Nỗi đau này quá lớn, anh chưa từng",
-        "Mối tình đầu quá trớn, ai cũng từng",
-        "Từng là từng ôm gối bên nhau giờ lại tặng nhau vết thương sâu",
-        "Nỗi nhớ này quá lớn, xin em đừng dằn vặt tim anh",
-        "Vậy thôi kết thúc cho nhanh!",
-        "Thế nên đừng làm quá trớn, đừng làm quá trớn chuyện gì",
-        "Từng lời nói nên nhẹ nhàng, thấm thía, chuyện buồn dễ đến rồi đi",
-        "Đừng hoang mang, thêm u sầu, nhức hết cả đầu",
-        "Thay vì ngồi đó hứng buồn rầu",
         "Hãy mang câu ca này xóa hết đi"
       ],
       "Hermosa": [
         "Hola hermosa, tựa như tranh vẽ",
         "Làm cho trái tim anh rung động không ngừng, hằng đêm thao thức",
-        "Từ khi thấy em anh chỉ muốn nói là đừng đi nhanh quá", 
-        "Đừng vội vàng xa rời đôi mắt anh đang si tình",
+        "Từ khi thấy em anh chỉ muốn nói là đừng đi nhanh quá",
         "Muốn bên em đi khắp thế gian này"
       ],
       "MRT": [
         "Cả đời này anh nợ em lời xin lỗi, khi tình yêu dần lạc lối",
         "Anh biết anh chẳng giữ được đâu",
-        "Anh không muốn thêm một lần nhìn em khóc",
-        "Nên anh sẽ tự mình mang theo bao tiếc nuối",
         "Đoàn tàu lăn bánh chia đôi cả thế giới, hai người hai khoảng trời mới",
-        "Mong cho em về nơi ánh dương ngập tràn",
         "Có lẽ quá muộn màng, ta đã lỡ lạc nhau thật rồi"
       ],
       "Kim Phút, Kim Giờ": [
         "Mình phải chia tay thật sao? Còn nhiều lời hứa từng trao",
         "Giờ đây anh phải thế nào? Đứng nhìn em cùng người ta sao?",
         "Chẳng muốn phải ôm khát vọng, rồi lỡ buông tay bỏ mặc em ở lại phía sau",
-        "Ước cho kim đồng hồ kia ngừng để ta sẽ mãi đứng im",
-        "Chẳng phải đuổi theo điều gì"
+        "Ước cho kim đồng hồ kia ngừng để ta sẽ mãi đứng im"
       ],
       "Thế Giới Của Anh": [
         "Khi anh buông cả thế giới, em mang nụ cười đến với",
         "Đợi anh như mơ, êm đềm như thơ",
         "Là em đã sưởi ấm hy vọng trong trái tim anh",
-        "Cho ta thêm một thế giới, cùng nhau",
-        "Đan chặt từng ước ao, cảm xúc dâng trào",
         "Anh đã tin vào tình yêu, giây phút ấy rực rỡ hơn bao điều"
       ],
       "Sao Hạng A": [
@@ -520,37 +479,26 @@
         "Như trăng với sao tình tứ cho nhau",
         "À ơi, thêu hoa dệt gấm",
         "Ngập tràn bao ánh dương nhẹ ôm lấy nơi trái tim anh lâu ngày",
-        "Khi dáng em nhẹ bước qua đây",
-        "Ngàn hoa thơm ngát hương nguyện đan lót trong gấm nhung như thêu thùa",
         "May mối duyên mình giữ trong tay"
       ],
       "50 Cuộc Gọi Nhỡ": [
         "Là hàng triệu nỗi nhớ anh đem chôn giấu trong nơi màn đêm",
         "Là từng cuộc gọi nhỡ không ai bắt máy, năm mươi lần đếm",
         "Với anh đáng sợ đó là khi nghe tiếng chuông reo",
-        "Thường là nỗi buồn bấy lâu nay mang theo, lại liên hồi rung lên",
-        "Giờ chỉ mình anh đếm thôi, chạy bao lâu mới đến nơi?",
-        "Để kịp hẹn cùng hạnh phúc bấy lâu anh chẳng dám đối diện",
-        "Năm mươi cuộc gọi giờ thay cho đáp án cuối cùng",
-        "Chọn khóc thay cho cười, chọn kết thúc một nỗi đau"
+        "Năm mươi cuộc gọi giờ thay cho đáp án cuối cùng"
       ],
       "Mộng Duyên": [
         "Mộng duyên giữa đôi ta, như cánh hoa nở trong đêm trăng tà",
         "Tình yêu đến bên ta, nhưng chóng phai ngỡ như đoá Quỳnh Hoa",
         "Là tiên nữ nơi đâu, hương sắc theo dấu ta đến tiêu sầu",
-        "Ngả nghiêng xiêu lòng say đắm muốn ngắm nhìn thật lâu",
-        "Mộng duyên suốt năm canh, mong dáng ai muốn buông chẳng nỡ đành",
-        "Gà gáy suốt đêm thanh, như cũng đang thấu cho nỗi lòng anh",
-        "Ngày cứ thế trôi nhanh, lưu luyến ai mải mê đến hiu quạnh",
-        "Hồn ta như lạc trong chốn nhân gian này",
         "Chẳng mong có ai thấu được lòng anh"
       ]
     };
 
-    const allTrackNames = Object.keys(songDatabase);[cite: 4]
-    let score = 0;[cite: 4]
-    let streak = 0;[cite: 4]
-    let lastLyric = "";[cite: 4]
+    const allTrackNames = Object.keys(songDatabase);
+    let score = 0;
+    let streak = 0;
+    let lastLyric = "";
 
     // 8 Tier Rank Badges
     function getScoreImage(finalScore) {
@@ -574,28 +522,28 @@
     }
 
     function getRandomElement(arr) {
-      return arr[Math.floor(Math.random() * arr.length)];[cite: 4]
+      return arr[Math.floor(Math.random() * arr.length)];
     }
 
     function nextTurn() {
-      const playableTracks = allTrackNames.filter(name => songDatabase[name].length > 0);[cite: 4]
-      const targetTrack = getRandomElement(playableTracks);[cite: 4]
-      const lines = songDatabase[targetTrack];[cite: 4]
+      const playableTracks = allTrackNames.filter(name => songDatabase[name].length > 0);
+      const targetTrack = getRandomElement(playableTracks);
+      const lines = songDatabase[targetTrack];
 
-      let chosenLine = "";[cite: 4]
+      let chosenLine = "";
       do {
-        chosenLine = getRandomElement(lines);[cite: 4]
-      } while (chosenLine === lastLyric && lines.length > 1);[cite: 4]
-      lastLyric = chosenLine;[cite: 4]
+        chosenLine = getRandomElement(lines);
+      } while (chosenLine === lastLyric && lines.length > 1);
+      lastLyric = chosenLine;
 
-      document.getElementById("lyric-display").textContent = `"${chosenLine}"`;[cite: 4]
+      document.getElementById("lyric-display").textContent = `"${chosenLine}"`;
 
-      const otherTracks = allTrackNames.filter(name => name !== targetTrack);[cite: 4]
-      const distractors = otherTracks.sort(() => 0.5 - Math.random()).slice(0, 3);[cite: 4]
-      const choices = [...distractors, targetTrack].sort(() => 0.5 - Math.random());[cite: 4]
+      const otherTracks = allTrackNames.filter(name => name !== targetTrack);
+      const distractors = otherTracks.sort(() => 0.5 - Math.random()).slice(0, 3);
+      const choices = [...distractors, targetTrack].sort(() => 0.5 - Math.random());
 
-      const container = document.getElementById("options-box");[cite: 4]
-      container.innerHTML = "";[cite: 4]
+      const container = document.getElementById("options-box");
+      container.innerHTML = "";
 
       choices.forEach((trackTitle) => {
         const btn = document.createElement("button");
@@ -608,110 +556,108 @@
     }
 
     function handlePick(selectedBtn, chosenTitle, correctTitle) {
-      const buttons = document.querySelectorAll(".choice-btn");[cite: 4]
-      buttons.forEach(b => (b.disabled = true));[cite: 4]
+      const buttons = document.querySelectorAll(".choice-btn");
+      buttons.forEach(b => (b.disabled = true));
 
-      if (chosenTitle === correctTitle) {[cite: 4]
-        selectedBtn.classList.add("correct");[cite: 4]
-        // Grey out all other options
+      if (chosenTitle === correctTitle) {
+        selectedBtn.classList.add("correct");
         buttons.forEach(b => {
           if (b !== selectedBtn) {
             b.classList.add("dimmed");
           }
         });
 
-        score += 10;[cite: 4]
-        streak += 1;[cite: 4]
-        document.getElementById("score-val").textContent = score;[cite: 4]
+        score += 10;
+        streak += 1;
+        document.getElementById("score-val").textContent = score;
         document.getElementById("streak-val").textContent = `🔥 CHUỖI: ${streak}`;
 
-        setTimeout(() => {[cite: 4]
-          nextTurn();[cite: 4]
-        }, 700);[cite: 4]
+        setTimeout(() => {
+          nextTurn();
+        }, 700);
       } else {
-        selectedBtn.classList.add("wrong");[cite: 4]
-        buttons.forEach(b => {[cite: 4]
-          if (b.dataset.track === correctTitle) {[cite: 4]
-            b.classList.add("correct");[cite: 4]
+        selectedBtn.classList.add("wrong");
+        buttons.forEach(b => {
+          if (b.dataset.track === correctTitle) {
+            b.classList.add("correct");
           } else if (b !== selectedBtn) {
-            // Grey out the other incorrect options
             b.classList.add("dimmed");
           }
         });
 
-        setTimeout(() => {[cite: 4]
-          showGameOverScreen(correctTitle);[cite: 4]
-        }, 1200);[cite: 4]
+        setTimeout(() => {
+          showGameOverScreen(correctTitle);
+        }, 1200);
       }
     }
 
     // --- 3. SUPABASE CLOUD LEADERBOARD ---
     async function fetchCloudLeaderboard() {
       try {
-        const { data, error } = await supabaseClient[cite: 4]
-          .from("leaderboard")[cite: 4]
-          .select("name, score, created_at")[cite: 4]
-          .order("score", { ascending: false })[cite: 4]
-          .limit(10);[cite: 4]
+        const { data, error } = await supabaseClient
+          .from("leaderboard")
+          .select("name, score, created_at")
+          .order("score", { ascending: false })
+          .limit(10);
 
-        if (error) throw error;[cite: 4]
-        return data || [];[cite: 4]
+        if (error) throw error;
+        return data || [];
       } catch (err) {
-        console.error("Lỗi khi tải bảng xếp hạng:", err);[cite: 4]
-        return [];[cite: 4]
+        console.error("Lỗi khi tải bảng xếp hạng:", err);
+        return [];
       }
     }
 
     async function saveScoreToCloud(name, finalScore) {
       try {
-        const cleanName = name.trim() || "Ẩn danh";[cite: 5]
+        const cleanName = name.trim() || "Ẩn danh";
 
-        const { data: existingPlayers, error: fetchErr } = await supabaseClient[cite: 5]
-          .from("leaderboard")[cite: 5]
-          .select("id, score")[cite: 5]
-          .ilike("name", cleanName)[cite: 5]
-          .limit(1);[cite: 5]
+        const { data: existingPlayers, error: fetchErr } = await supabaseClient
+          .from("leaderboard")
+          .select("id, score")
+          .ilike("name", cleanName)
+          .limit(1);
 
-        if (fetchErr) throw fetchErr;[cite: 5]
+        if (fetchErr) throw fetchErr;
 
-        if (existingPlayers && existingPlayers.length > 0) {[cite: 5]
-          const record = existingPlayers[0];[cite: 5]
-          if (finalScore > record.score) {[cite: 5]
-            const { error: updateErr } = await supabaseClient[cite: 5]
-              .from("leaderboard")[cite: 5]
-              .update({[cite: 5]
-                score: finalScore,[cite: 5]
-                created_at: new Date().toISOString()[cite: 5]
-              })[cite: 5]
-              .eq("id", record.id);[cite: 5]
+        if (existingPlayers && existingPlayers.length > 0) {
+          const record = existingPlayers[0];
+          if (finalScore > record.score) {
+            const { error: updateErr } = await supabaseClient
+              .from("leaderboard")
+              .update({
+                score: finalScore,
+                created_at: new Date().toISOString()
+              })
+              .eq("id", record.id);
 
-            if (updateErr) throw updateErr;[cite: 5]
+            if (updateErr) throw updateErr;
           }
-          return true;[cite: 5]
+          return true;
         } else {
-          const { error: insertErr } = await supabaseClient[cite: 5]
-            .from("leaderboard")[cite: 5]
-            .insert([[cite: 5]
-              { name: cleanName, score: finalScore }[cite: 5]
-            ]);[cite: 5]
+          const { error: insertErr } = await supabaseClient
+            .from("leaderboard")
+            .insert([
+              { name: cleanName, score: finalScore }
+            ]);
 
-          if (insertErr) throw insertErr;[cite: 5]
-          return true;[cite: 5]
+          if (insertErr) throw insertErr;
+          return true;
         }
       } catch (err) {
-        console.error("Lỗi khi lưu điểm:", err);[cite: 4]
-        return false;[cite: 4]
+        console.error("Lỗi khi lưu điểm:", err);
+        return false;
       }
     }
 
     async function renderLeaderboardTable() {
-      const list = await fetchCloudLeaderboard();[cite: 4]
-      if (list.length === 0) {[cite: 4]
-        return `<p style="color: #64748b; text-align: center; margin: 1rem 0;">Chưa có kỷ lục nào được ghi nhận.</p>`;[cite: 4]
+      const list = await fetchCloudLeaderboard();
+      if (list.length === 0) {
+        return `<p style="color: #64748b; text-align: center; margin: 1rem 0;">Chưa có kỷ lục nào được ghi nhận.</p>`;
       }
 
-      let rows = list.map((item, index) => {[cite: 4]
-        const dateStr = new Date(item.created_at).toLocaleDateString("vi-VN");[cite: 4]
+      let rows = list.map((item, index) => {
+        const dateStr = new Date(item.created_at).toLocaleDateString("vi-VN");
         let medal = `#${index + 1}`;
         if (index === 0) medal = "🥇 #1";
         if (index === 1) medal = "🥈 #2";
@@ -725,7 +671,7 @@
             <td style="color: #94a3b8; font-size: 0.85rem;">${dateStr}</td>
           </tr>
         `;
-      }).join("");[cite: 4]
+      }).join("");
 
       return `
         <table class="leaderboard-table">
@@ -739,12 +685,12 @@
           </thead>
           <tbody>${rows}</tbody>
         </table>
-      `;[cite: 4]
+      `;
     }
 
     async function showGameOverScreen(correctTitle) {
-      const card = document.getElementById("game-card");[cite: 4]
-      const badgeImgUrl = getScoreImage(score);[cite: 4]
+      const card = document.getElementById("game-card");
+      const badgeImgUrl = getScoreImage(score);
 
       card.innerHTML = `
         <div class="game-over-header">HẾT GIỜ RỒI!</div>
@@ -753,7 +699,6 @@
           Đáp án đúng: <strong>${correctTitle}</strong>
         </div>
 
-        <!-- Rank badge image for each 100 points tier -->
         <div class="rank-badge-container">
           <img src="${badgeImgUrl}" alt="Rank Badge" class="rank-badge-img" onerror="this.style.display='none'" />
         </div>
@@ -776,36 +721,36 @@
         </div>
 
         <button class="btn-restart" onclick="location.reload()">Đấu lại ván mới</button>
-      `;[cite: 4]
+      `;
 
-      // Fetch and show top scores
-      document.getElementById("board-container").innerHTML = await renderLeaderboardTable();[cite: 4]
+      document.getElementById("board-container").innerHTML = await renderLeaderboardTable();
     }
 
     async function handleSaveScore() {
-      const nameInput = document.getElementById("player-name");[cite: 4]
-      const saveBtn = document.getElementById("btn-save-action");[cite: 4]
-      const name = nameInput.value;[cite: 4]
+      const nameInput = document.getElementById("player-name");
+      const saveBtn = document.getElementById("btn-save-action");
+      const name = nameInput.value;
 
-      saveBtn.disabled = true;[cite: 4]
-      saveBtn.textContent = "...";[cite: 4]
+      saveBtn.disabled = true;
+      saveBtn.textContent = "...";
 
-      const success = await saveScoreToCloud(name, score);[cite: 4]
-      if (success) {[cite: 4]
+      const success = await saveScoreToCloud(name, score);
+      if (success) {
         document.getElementById("save-section").innerHTML = `
           <p style="text-align: center; color: #0284c7; font-weight: 700; margin-bottom: 1.25rem;">
             Đã đồng bộ điểm số lên đám mây thành công!
           </p>
         `;
-        document.getElementById("board-container").innerHTML = await renderLeaderboardTable();[cite: 4]
+        document.getElementById("board-container").innerHTML = await renderLeaderboardTable();
       } else {
-        alert("Không thể lưu điểm lên database. Vui lòng kiểm tra lại kết nối hoặc Supabase keys.");[cite: 4]
-        saveBtn.disabled = false;[cite: 4]
-        saveBtn.textContent = "Lưu";[cite: 4]
+        alert("Không thể lưu điểm lên database. Vui lòng kiểm tra lại kết nối hoặc Supabase keys.");
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Lưu";
       }
     }
 
-    nextTurn();[cite: 4]
+    // Start quiz
+    nextTurn();
   </script>
 </body>
 </html>
