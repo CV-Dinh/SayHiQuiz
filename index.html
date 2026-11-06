@@ -373,77 +373,6 @@
       box-shadow: 0 2px 0 var(--kahoot-green-dark);
     }
 
-    /* History review section */
-    .history-card {
-      background: #f8fafc;
-      border: 2px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 1.1rem 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-    .history-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #1e293b;
-      margin-bottom: 0.85rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .history-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      max-height: 260px;
-      overflow-y: auto;
-      padding-right: 0.35rem;
-    }
-    .history-item {
-      background: #ffffff;
-      border: 1.5px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 0.75rem 0.9rem;
-      font-size: 0.92rem;
-      border-left: 5px solid #cbd5e1;
-    }
-    .history-item.is-correct {
-      border-left-color: #10b981;
-    }
-    .history-item.is-wrong {
-      border-left-color: #ef4444;
-    }
-    .history-q {
-      font-weight: 700;
-      color: #0f172a;
-      margin-bottom: 0.35rem;
-      line-height: 1.4;
-    }
-    .history-ans-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-    .history-picked {
-      padding: 0.2rem 0.55rem;
-      border-radius: 6px;
-    }
-    .history-picked.correct-pill {
-      background: #dcfce7;
-      color: #15803d;
-    }
-    .history-picked.wrong-pill {
-      background: #fee2e2;
-      color: #b91c1c;
-    }
-    .history-actual {
-      background: #e0f2fe;
-      color: #0369a1;
-      padding: 0.2rem 0.55rem;
-      border-radius: 6px;
-    }
-
     .leaderboard-title {
       font-size: 1.2rem;
       font-weight: 900;
@@ -521,6 +450,77 @@
       box-shadow: 0 2px 0 var(--kahoot-blue-dark);
     }
 
+    /* History review section at bottom */
+    .history-card {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1.1rem 1.2rem;
+      margin-top: 1.5rem;
+    }
+    .history-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-height: 260px;
+      overflow-y: auto;
+      padding-right: 0.35rem;
+    }
+    .history-item {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 0.75rem 0.9rem;
+      font-size: 0.92rem;
+      border-left: 5px solid #cbd5e1;
+    }
+    .history-item.is-correct {
+      border-left-color: #10b981;
+    }
+    .history-item.is-wrong {
+      border-left-color: #ef4444;
+    }
+    .history-q {
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.35rem;
+      line-height: 1.4;
+    }
+    .history-ans-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .history-picked {
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+    }
+    .history-picked.correct-pill {
+      background: #dcfce7;
+      color: #15803d;
+    }
+    .history-picked.wrong-pill {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+    .history-actual {
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+    }
+
     @keyframes popIn {
       0% { transform: scale(0.85); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
@@ -533,147 +533,819 @@
 
   <script>
     // --- 1. SUPABASE CREDENTIALS ---
-    const SUPABASE_URL = "https://valdbdkrbmnjsugyyfms.supabase.co";
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZhbGRiZGtyYm1uanN1Z3l5Zm1zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM4MzIzMzMsImV4cCI6MjEwOTQwODMzM30.JeGV6p4esHmkHZAjP-yIT8JHt1xiXN5Gl705xJHnrYg";
-    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const SUPABASE_URL = "https://valdbdkrbmnjsugyyfms.supabase.co";[cite: 5]
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZhbGRiZGtyYm1uanN1Z3l5Zm1zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM4MzIzMzMsImV4cCI6MjEwOTQwODMzM30.JeGV6p4esHmkHZAjP-yIT8JHt1xiXN5Gl705xJHnrYg";[cite: 5]
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);[cite: 5]
 
-    // --- 2. SONG DATABASE (15 Tracks) ---
+    // --- 2. SONG DATABASE (Categorized into Chorus & Full Song) ---
     const songDatabase = {
-      "MVP (Mưa Vội Phóng)": [
-        "Mưa, nhẹ rơi, màn đêm, mình anh phóng qua nơi em",
-        "Từng hàng cây từng con phố, chờ anh chút thôi",
-        "Người còn định dỗi anh đến bao giờ, xuống đây đi anh chờ",
-        "Lòng không yên mỗi khi thấy em thờ ơ",
-        "Đừng mặc anh dưới mưa buồn rơi ướt áo",
-        "Nếu yêu em là điều dại dột thì con tim anh muốn sai",
-        "Người vờn anh trong những lo sợ, ngổn ngang những nghi ngờ",
-        "Mình mập mờ với nhau đến khi nào, hé ra cho anh vào",
-        "Lỡ sau hôm nay ta quên nhau thì sao"
-      ],
-      "Catch Me If You Can": [
-        "Quay lưng sang đã thấy người đi",
-        "Chẳng còn tương lai lấp lánh như trong cơn mơ lúc em vẫn ngây thơ",
-        "Bỏ anh đi làm gì không giữ lúc mất đừng tìm thôi thì ngậm cay đắng đi",
-        "Đừng vì một phút cô đơn mà tìm đến bên anh",
-        "Kiếm lấy anh để săn mồi, you're chasing behind my back",
-        "Giờ thì ai lau nước mắt em trong cơn say giữa cơn đau đọa đày?",
-        "Anh chẳng phải là game cho em chơi rồi lại quay xe",
-        "Catch me if you can, đuổi theo anh nếu em làm được"
-      ],
-      "Laviem": [
-        "Trái tim anh chẳng còn cần thiết nữa, nói chi đến đây cũng thừa",
-        "Rượu vang pha với cơn mưa",
-        "Hàng trăm lý do cũng chẳng thể cứu vãn",
-        "Biết sao hết cho vừa lòng nhau mới thấu đây em",
-        "Dệt hàng triệu vết thương, tự vùi mình trước gương",
-        "Nhìn một người đã từng thương sao nay xa lạ đến bất thường",
-        "Cố gắng cũng chỉ bằng không, nước mắt ngược dòng",
-        "Chảy ngược tận sâu bên trong nghẹn đắng nơi lồng ngực"
-      ],
-      "Xoay Vòng": [
-        "Phải xoay vòng, xoay vòng, xoay vòng đến bao giờ",
-        "Chạy theo ngay sau mà sao em cứ xa mờ",
-        "Buông anh nơi chơi vơi để những mong chờ",
-        "Chôn anh trong bao đêm cô đơn anh chỉ ước đây là mơ",
-        "Nên thôi đừng nhìn anh nữa",
-        "Vì anh biết anh lại chìm vào mắt em",
-        "Thôi đừng ôm anh nữa, ah-ah",
-        "Vì đôi tay đó sẽ khiến anh yếu mềm, yếu thêm, lại yêu em"
-      ],
-      "Tình Đầu Quá Chén": [
-        "Mối tình đầu quá trớn, ta nên dừng",
-        "Từng ngàn câu hứa phôi phai, giờ này người đang nhấp môi ai?",
-        "Nỗi đau này quá lớn, anh chưa từng",
-        "Mối tình đầu quá trớn, ai cũng từng",
-        "Từng là từng ôm gối bên nhau giờ lại tặng nhau vết thương sâu",
-        "Nỗi nhớ này quá lớn, xin em đừng dằn vặt tim anh",
-        "Vậy thôi kết thúc cho nhanh!",
-        "Thế nên đừng làm quá trớn, đừng làm quá trớn chuyện gì",
-        "Từng lời nói nên nhẹ nhàng, thấm thía, chuyện buồn dễ đến rồi đi",
-        "Đừng hoang mang, thêm u sầu, nhức hết cả đầu",
-        "Thay vì ngồi đó hứng buồn rầu",
-        "Hãy mang câu ca này xóa hết đi"
-      ],
-      "Hermosa": [
-        "Hola hermosa, tựa như tranh vẽ",
-        "Làm cho trái tim anh rung động không ngừng, hằng đêm thao thức",
-        "Từ khi thấy em anh chỉ muốn nói là đừng đi nhanh quá", 
-        "Đừng vội vàng xa rời đôi mắt anh đang si tình",
-        "Muốn bên em đi khắp thế gian này"
-      ],
-      "MRT": [
-        "Cả đời này anh nợ em lời xin lỗi, khi tình yêu dần lạc lối",
-        "Anh biết anh chẳng giữ được đâu",
-        "Anh không muốn thêm một lần nhìn em khóc",
-        "Nên anh sẽ tự mình mang theo bao tiếc nuối",
-        "Đoàn tàu lăn bánh chia đôi cả thế giới, hai người hai khoảng trời mới",
-        "Mong cho em về nơi ánh dương ngập tràn",
-        "Có lẽ quá muộn màng, ta đã lỡ lạc nhau thật rồi"
-      ],
-      "Kim Phút, Kim Giờ": [
-        "Mình phải chia tay thật sao? Còn nhiều lời hứa từng trao",
-        "Giờ đây anh phải thế nào? Đứng nhìn em cùng người ta sao?",
-        "Chẳng muốn phải ôm khát vọng, rồi lỡ buông tay bỏ mặc em ở lại phía sau",
-        "Ước cho kim đồng hồ kia ngừng để ta sẽ mãi đứng im",
-        "Chẳng phải đuổi theo điều gì"
-      ],
-      "Thế Giới Của Anh": [
-        "Khi anh buông cả thế giới, em mang nụ cười đến với",
-        "Đợi anh như mơ, êm đềm như thơ",
-        "Là em đã sưởi ấm hy vọng trong trái tim anh",
-        "Cho ta thêm một thế giới, cùng nhau",
-        "Đan chặt từng ước ao, cảm xúc dâng trào",
-        "Anh đã tin vào tình yêu, giây phút ấy rực rỡ hơn bao điều"
-      ],
-      "Sao Hạng A": [
-        "Thề là thấy em giây đầu tiên, anh đã muốn đưa em lên thuyền",
-        "Baby bấy lâu nay ở đâu? Sao giờ mới được nhìn thấy nhau?",
-        "Thật lòng những ngôi sao ngoài kia chẳng có ai lọt vào được mắt anh",
-        "Xứng tầm được làm một ngôi sao ở tận trên cao nếu anh ngay bên cạnh"
-      ],
-      "Dancin' My Way": [
-        "Gạt nỗi lo đi, cầm lấy tay anh baby, dancin' my own way",
-        "Ngàn câu ca đang thay anh nói lời yêu (Tận sâu trái tim anh này)",
-        "Lạc giữa tinh hà, chỉ có riêng ta mình cùng khiêu vũ trong đêm nay",
-        "Theo nhịp đôi chân cứ đắm say"
-      ],
-      "Love Sand": [
-        "Giờ thì ta chỉ cần cùng nhắm mắt, đan tay",
-        "Ôm lấy nhau thật lâu không rời, mình sẽ có với nhau giây phút tuyệt vời",
-        "Nằm dưới cát đêm nay, bao thứ kia trên đời chẳng cần gì khi đã có em rồi"
-      ],
-      "Thêu Hoa Dệt Gấm": [
-        "Như trăng với sao tình tứ cho nhau",
-        "À ơi, thêu hoa dệt gấm",
-        "Ngập tràn bao ánh dương nhẹ ôm lấy nơi trái tim anh lâu ngày",
-        "Khi dáng em nhẹ bước qua đây",
-        "Ngàn hoa thơm ngát hương nguyện đan lót trong gấm nhung như thêu thùa",
-        "May mối duyên mình giữ trong tay"
-      ],
-      "50 Cuộc Gọi Nhỡ": [
-        "Là hàng triệu nỗi nhớ anh đem chôn giấu trong nơi màn đêm",
-        "Là từng cuộc gọi nhỡ không ai bắt máy, năm mươi lần đếm",
-        "Với anh đáng sợ đó là khi nghe tiếng chuông reo",
-        "Thường là nỗi buồn bấy lâu nay mang theo, lại liên hồi rung lên",
-        "Giờ chỉ mình anh đếm thôi, chạy bao lâu mới đến nơi?",
-        "Để kịp hẹn cùng hạnh phúc bấy lâu anh chẳng dám đối diện",
-        "Năm mươi cuộc gọi giờ thay cho đáp án cuối cùng",
-        "Chọn khóc thay cho cười, chọn kết thúc một nỗi đau"
-      ],
-      "Mộng Duyên": [
-        "Mộng duyên giữa đôi ta, như cánh hoa nở trong đêm trăng tà",
-        "Tình yêu đến bên ta, nhưng chóng phai ngỡ như đoá Quỳnh Hoa",
-        "Là tiên nữ nơi đâu, hương sắc theo dấu ta đến tiêu sầu",
-        "Ngả nghiêng xiêu lòng say đắm muốn ngắm nhìn thật lâu",
-        "Mộng duyên suốt năm canh, mong dáng ai muốn buông chẳng nỡ đành",
-        "Gà gáy suốt đêm thanh, như cũng đang thấu cho nỗi lòng anh",
-        "Ngày cứ thế trôi nhanh, lưu luyến ai mải mê đến hiu quạnh",
-        "Hồn ta như lạc trong chốn nhân gian này",
-        "Chẳng mong có ai thấu được lòng anh"
-      ]
+      "MVP (Mưa Vội Phóng)": {
+        chorus: [
+         "Ooh-wah-oh-ah, lỡ mai ta quay lại làm bạn thì người có tiếc điều gì không?",
+          "Vì giờ này anh không thể quay lưng đi với những yêu thương trong lòng",
+          "Đội cơn mưa lòng anh nôn nóng",
+          "Người còn định dỗi anh đến bao giờ, xuống đây đi anh chờ",
+          "Lòng không yên mỗi khi thấy em thờ ơ",
+          "Người vờn anh trong những lo sợ, ngổn ngang những nghi ngờ",
+          "Mình mập mờ với nhau đến khi nào, hé ra cho anh vào",
+          "Đừng mặc anh dưới mưa buồn rơi ướt áo",
+          "Lỡ sau hôm nay ta quên nhau thì sao"
+          ],
+        fullSong: [
+          "Mưa nhẹ rơi màn đêm",
+          "Mình anh phóng qua nơi em",
+          "Từng hàng cây từng con phố",
+          "Chờ anh chút thôi đừng vội buông tay khi chưa gặp nốt đêm nay",
+          "Ooh-wah-oh-ah, lỡ mai ta quay lại làm bạn thì người có tiếc điều gì không?",
+          "Vì giờ này anh không thể quay lưng đi với những yêu thương trong lòng",
+          "Đội cơn mưa lòng anh nôn nóng",
+          "Người còn định dỗi anh đến bao giờ, xuống đây đi anh chờ",
+          "Lòng không yên mỗi khi thấy em thờ ơ",
+          "Người vờn anh trong những lo sợ, ngổn ngang những nghi ngờ",
+          "Mình mập mờ với nhau đến khi nào, hé ra cho anh vào",
+          "Đừng mặc anh dưới mưa buồn rơi ướt áo",
+          "Lỡ sau hôm nay ta quên nhau thì sao",
+          "Đối với anh thì, (Yeah-eh-eh) dăm ba hạt mưa này",
+          "Cũng không lạnh bằng một lần em im lặng (Ooh-woah-oh-oh)",
+          "Anh có thể băng qua cả một vùng mây đen (Ah-ah-ah)",
+          "Chỉ để được thấy em",
+          "Vượt khó để có câu trả lời, vì cảm xúc kia đã buông lơi",
+          "Thành phố mưa rơi thật yên bình vậy mà lòng anh như vỡ đôi",
+          "Người nói hai ta là ngang hàng, thực tế anh luôn nhận thua",
+          "Nàng ngập ngừng cho anh tình yêu mong manh như sương đêm dây dưa, ooh-woah-oh-ah-ah",
+          "Trời lạnh cần vòng tay nàng, ah",
+          "Tiện đường tìm bờ môi nàng, ah",
+          "Và nếu em trao anh quyền được yêu em trong phút giây này",
+          "Có sao không khi giờ anh xin người hãy nhìn anh thêm chút thôi",
+          "Oh-ooh-ah, lỡ mai ta quay lại làm bạn thì người có tiếc điều gì không?",
+          "Từng hạt mưa cứ xuyên vào tim anh tự lúc nào",
+          "Trong cơn mưa vội phóng",
+          "Thầm ước ao em đang trông ngóng",
+          "Dẫu màn đêm như muốn níu anh lại",
+          "Nhưng tình yêu không nhanh sẽ phai",
+          "Nếu yêu em là điều dại dột thì con tim anh muốn sai",
+          "(Người còn định dỗi anh đến bao giờ)",
+          "(Dỗi anh đến bao giờ, dỗi-dỗi)",
+          "(Mình mập mờ với nhau đến khi nào)",
+          "(Hé-hé-hé ra cho anh vào)",
+          "(Nào, nào)",
+          "Người vờn anh trong những lo sợ, ngổn ngang những nghi ngờ (Ah)"
+        ]
+      },
+      "Catch Me If You Can": {
+        chorus: [
+          "Quay lưng sang đã thấy người đi",
+          "Chẳng còn tương lai lấp lánh như trong cơn mơ lúc em vẫn ngây thơ",
+          "Hứa xong lại thế \"anh ơi em sẽ quay trở về\"",
+          "Giờ thì nhìn xem ngoài nước mắt đang tuôn từng cơn, em có ai yêu lấy em thật lòng",
+          "Bỏ anh đi làm gì không giữ lúc mất đừng tìm thôi thì ngậm cay đắng đi",
+          "Đừng nói bao câu ngọt ngào, làm bẫy cho anh lọt vào, vào rồi lại đi khuất xa",
+          "Mọi chuyện là do em đó, không tin em nhìn xem",
+          "Đừng vì một phút cô đơn mà tìm đến bên anh",
+          "Chẳng phải rằng đó là điều em vẫn giỏi nhất trên đời, kiếm lấy anh để săn mồi",
+          "You're chasing behind my back",
+          "Mọi chuyện là do em đó, không tin thôi kệ đi",
+          "Đừng vờn đừng cố lôi anh vào chốn những mơ hồ",
+          "Chẳng phải đã muốn anh biến mất đi cho rồi",
+          "Nay lại đòi muốn có anh ở trong đời, so catch me if you can"
+        ],
+        fullSong: [
+          "หนึ่งสองสามสี่, quay lưng sang đã thấy người đi",
+          "Chẳng còn tương lai lấp lánh như trong cơn mơ lúc em vẫn ngây thơ",
+          "Hứa xong lại thế \"anh ơi em sẽ quay trở về\"",
+          "Giờ thì nhìn xem ngoài nước mắt đang tuôn từng cơn, em có ai yêu lấy em thật lòng",
+          "Bỏ anh đi làm gì không giữ lúc mất đừng tìm thôi thì ngậm cay đắng đi",
+          "Đừng nói bao câu ngọt ngào, làm bẫy cho anh lọt vào, vào rồi lại đi khuất xa",
+          "Mọi chuyện là do em đó, không tin em nhìn xem",
+          "Đừng vì một phút cô đơn mà tìm đến bên anh",
+          "Chẳng phải rằng đó là điều em vẫn giỏi nhất trên đời, kiếm lấy anh để săn mồi",
+          "You're chasing behind my back",
+          "Mọi chuyện là do em đó, không tin thôi kệ đi",
+          "Đừng vờn đừng cố lôi anh vào chốn những mơ hồ",
+          "Chẳng phải đã muốn anh biến mất đi cho rồi",
+          "Nay lại đòi muốn có anh ở trong đời, so catch me if you can",
+          "(Oh-oh-oh-oh-oh)",
+          "Haizz, you know what I'm saying like (Ah-ah-ah-ah-ah-ah-ah-ah)",
+          "Em cứ đi rồi một ngày nào đó em cũng sẽ phải quay lại tìm anh (Ah-ah-ah-ah-ah)",
+          "Haha, anh hiểu em quá mà, đúng không? (Oh-oh-oh-oh-oh-oh)",
+          "หนึ่งสองสามสี่, trên tay em uống hết cạn ly",
+          "Giờ thì ai lau nước mắt em trong cơn say giữa cơn đau đọa đày?",
+          "Đứng dưới vực sâu em ơi không ở đây được đâu",
+          "Đừng nhìn anh với ánh mắt long lanh vờ như em chẳng có tội tình gì",
+          "Hey, đã bên nhau từ lâu",
+          "Mà em để relationship mình đang độc thân là sao?",
+          "Anh chẳng phải là game cho em chơi rồi lại quay xe đúng nói những lời nói dối, don't repeat thứ anh hay nghe",
+          "And no you want me back?",
+          "Hell no, you wanna catch me up? So slow",
+          "Em cứ nghe lời ai, họ nói em chẳng hề sai",
+          "Giờ nhìn xem, em đang có ai? No one",
+          "Đừng vởn đừng cố lôi anh vào trong những mơ hồ",
+          "Nay lại đòi muốn có anh ở trong đời (Hah), so catch me if you can",
+          "Catch me if you can, catch-catch-catch me if you can",
+          "(Mọi chuyện là do em đó)",
+          "(Catch me if you can)",
+          "Pa-papa-da-bapa (Ỏ), papa-da-bapa (Go, go)",
+          "Bada-baba-dada-bapa (Go), papa-da-bapa",
+          "Hah-ah-hah-ah-ah-ah-ah-ah-ah (Brrah-bada-pa)",
+          "Catch me if you can - Là do em đó",
+          "Catch me, catch me, catch me, say what",
+          "Catch me, catch me, catch me, say what (What?)",
+          "So catch me if you can"
+              ]
+            },
+      
+      "Laviem": {
+        chorus: [
+          "Cần thiết nữa, nói chi đến đây cũng thừa",
+    "Giờ chỉ còn mình với vấn vương",
+    "Hàng trăm lý do cũng chẳng thể cứu vãn",
+    "Biết sao hết cho vừa lòng nhau mới thấu đây em",
+    "(Hino in your mind)",
+    "Trái tim anh chẳng còn cần thiết nữa, nói chi đến đây cũng thừa",
+    "Rượu vang pha với cơn mưa",
+    "Dệt hàng triệu vết thương, tự vùi mình trước gương",
+    "Nhìn một người đã từng thương sao nay xa lạ đến bất thường (Oh)",
+    "Cố gắng cũng chỉ bằng không, nước mắt ngược dòng",
+    "Chảy ngược tận sâu bên trong nghẹn đắng nơi lồng ngực (Ðắng nơi lồng ngực)"
+        ],
+        fullSong: [
+          "Cần thiết nữa, nói chi đến đây cũng thừa",
+    "Giờ chỉ còn mình với vấn vương",
+    "Hàng trăm lý do cũng chẳng thể cứu vãn",
+    "Biết sao hết cho vừa lòng nhau mới thấu đây em",
+    "(Hino in your mind)",
+    "Trái tim anh chẳng còn cần thiết nữa, nói chi đến đây cũng thừa",
+    "Rượu vang pha với cơn mưa",
+    "Dệt hàng triệu vết thương, tự vùi mình trước gương",
+    "Nhìn một người đã từng thương sao nay xa lạ đến bất thường (Oh)",
+    "Cố gắng cũng chỉ bằng không, nước mắt ngược dòng",
+    "Chảy ngược tận sâu bên trong nghẹn đắng nơi lồng ngực (Ðắng nơi lồng ngực)",
+    "Ta chia tay (Ta chia tay), vì sao em ơi? (Vì sao?)",
+    "Điều này anh muốn hỏi lâu rồi",
+    "Những khung trời kỷ niệm vỡ đôi",
+    "Có phải vì một câu anh đã lỡ lời (CAPTAIN BOY bay tới đây, yeah)",
+    "Sau đêm nay (Sau đêm nay), tự ta cho ta (Tự ta cho ta)",
+    "Em và anh một đoạn kết mới",
+    "Dù rằng mình còn yêu nhau rất nhiều đấy",
+    "Nhưng để ở lại thì anh nghĩ là không",
+    "Và sau những cảm xúc nhất thời",
+    "Người bên em giờ này chẳng còn là anh",
+    "Gửi lại quá khứ cung đàn đã vỡ (Vỡ)",
+    "Vì những vấn vương ấy chưa kịp thành lời",
+    "Dệt hàng triệu vết thương (Thương), tự vùi mình trước gương (Ah)",
+    "Nhìn một người đã từng thương sao nay xa lạ đến bất thường",
+    "Chảy ngược tận sâu bên trong nghẹn đắng nơi lồng ngực",
+    "Tất cả là tại vì em, em, em, em, em, e-em",
+    "Người xa lạ anh từng quen",
+    "Kẻ ngốc đang say tình dưới ngọn đèn (Dưới ngọn đèn)",
+    "Tất cả là tại vì em, em, em, em, em, e-em (Baby)",
+    "Tất cả là tại vì em, em, em, em, em, yeah-eh-eh",
+    "Lau đôi mi, đây là nước mắt hay mưa",
+    "Buông đôi tay, anh đâu muốn phải dây dưa",
+    "Quên đi đôi mắt ấy khi xưa, (À) chẳng bên nhau được nữa",
+    "Sau bao lần đau, anh lại cho đi và quên",
+    "Anh ghét nỗi đau, cơn mưa đêm kia và em",
+    "Ta vội quên rồi, những điều sao thật quen",
+    "Để nỗi buồn kia gọi tên mỗi khi bài ca bật lên",
+    "Và sau những cảm xúc (Xúc) nhất thời (Nhất thời)",
+    "Người bên em giờ này chẳng còn là anh (Anh)",
+    "Gửi lại quá khứ cung đàn đã vỡ",
+    "Trái tim anh chẳng còn cần thiết nữa (Ooh-ooh), nói chi đến đây cũng thừa",
+    "Biết sao hết cho vừa lòng nhau mới thấu đây em (Em)",
+    "Cố gắng cũng chỉ bằng không, nước mắt (Mắt)",
+    "Tất cả là tại vì em, em, em, em, em, e-em (Oh-ooh-woah)",
+    "Tất cả là tại vì em, em, em, em, em, heh-e-e-em (Ah-ah-ah)",
+    "Kẻ ngốc đang say tinh dưới ngọn đèn (Dưới ngọn đèn)",
+    "Anh chẳng còn cần thiết nữa, nói chi đến đây cũng thừa"
+        ]
+      },
+      "Xoay Vòng": {
+        chorus: [
+         "Đã bao nhiêu lần anh nhận ra, trái tim lạnh căm em ngày qua",
+    "Đến bên và ôm anh từ xa trong anh lại thôi những vụn vỡ",
+    "Cứ quay mặt đi, nói năng đâu thêm một lời chi",
+    "Dấy lên trong anh những hoài nghi, rồi quay về như chưa từng bước đi",
+    "Phải xoay vòng, xoay vòng, xoay vòng đến bao giờ",
+    "Chạy theo ngay sau mà sao em cứ xa mờ",
+    "Buông anh nơi chơi vơi để những mong chờ",
+    "Chôn anh trong bao đêm cô đơn anh chỉ ước đây là mơ",
+    "Nên thôi đừng nhìn anh nữa",
+    "Vì anh biết anh lại chìm vào mắt em",
+    "Thôi đừng ôm anh nữa, ah-ah",
+    "Vì đôi tay đó sẽ khiến anh yếu mềm, yếu thêm, lại yêu em"
+        ],
+        fullSong: [
+          "Mỗi lần tim em thấy đau lại tìm về nơi anh",
+    "Cũng chỉ quanh những lý do quen thuộc",
+    "Bờ vai đây chỉ để mi người vội khô nhanh",
+    "Đã bao nhiêu lần anh nhận ra, trái tim lạnh căm em ngày qua",
+    "Đến bên và ôm anh từ xa trong anh lại thôi những vụn vỡ",
+    "Cứ quay mặt đi, nói năng đâu thêm một lời chi",
+    "Dấy lên trong anh những hoài nghi, rồi quay về như chưa từng bước đi",
+    "Phải xoay vòng, xoay vòng, xoay vòng đến bao giờ",
+    "Chạy theo ngay sau mà sao em cứ xa mờ",
+    "Buông anh nơi chơi vơi để những mong chờ",
+    "Chôn anh trong bao đêm cô đơn anh chỉ ước đây là mơ",
+    "Nên thôi đừng nhìn anh nữa",
+    "Vì anh biết anh lại chìm vào mắt em",
+    "Thôi đừng ôm anh nữa, ah-ah",
+    "Vì đôi tay đó sẽ khiến anh yếu mềm, yếu thêm, lại yêu em",
+    "(Anh vừa tỉnh giấc sau những gió giông phía xa chân trời)",
+    "Một mình không quen, hai mươi tư giờ anh cầm tay em",
+    "Em sợ mây đen, đưa tay lên ô che ngay bên",
+    "Đêm em say thêm, đường về nhà như vừa thay tên",
+    "Kêu than sao không một ai bên, vậy anh là ai sao em thật hay quên",
+    "Anh nhận ra, trái tim lạnh căm bao ngày qua",
+    "Cứ quay mặt đi (Mặt đi), nói năng đâu thêm một lời chi (Lời chi)",
+    "Bởi vì anh biết anh lại chìm vào mắt em",
+    "Thôi đừng ôm anh nữa, ah-ah-ah",
+    "Yêu em, nhưng anh phải chơi ở trong vòng xoay này đến bao giờ",
+    "Yêu em, yêu em, nhưng anh phải chơi ở trong vòng xoay này đến bao giờ",
+    "Có nhau nhưng một người lẻ loi",
+    "Mỗi anh phải chịu từng đắng cay này thôi",
+    "Em không chịu buông tay, xin anh quay về ngay cạnh em đi",
+    "Em sẽ không thể yêu ai được nữa",
+    "Vậy thì okay I'm running back to you again (Ooh-wooh)",
+    "I'm running back to you again (To you)",
+    "Baby don't worry, I be running running",
+    "Be right back to you right now",
+    "(Xoay, xoay, xoay, xoay, xoay, xoay)",
+    "Đừng nhìn anh nữa",
+    "Đừng nhìn anh nữa em à",
+    "Ta vẫn trong một vòng xoay"
+        ]
+      },
+      "Tình Đầu Quá Chén": {
+        chorus: [
+          "Tình đầu trong anh như chén rượu sầu, dẫu có lúc nhạt màu",
+    "Vẫn khắc sâu, biết chắc là đau (Là đau), dẫu có lúc đậm sâu",
+    "Đến mức nghi ngờ (Ah), tỉnh giấc lúc hai giờ (Ah)",
+    "Nhớ em, nhớ trong giấc mơ, đến khi xác xơ",
+    "Tình đầu ai cũng có lỗi lầm mà",
+    "Cũng phải có lần đầu vấp ngã, thế nó mới nhận ra",
+    "Những khúc mắc ngày qua dối trá ta mà, mịt mờ khắp cõi ta bà",
+    "Hãy nhìn nơi đôi mắt sâu này, em có tin rằng chúng ta hợp nhau?",
+    "Thế nên đừng làm quá trớn, đừng làm quá trớn chuyện gì",
+    "Từng lời nói nên nhẹ nhàng, thấm thía, chuyện buồn dễ đến rồi đi",
+    "Đừng hoang mang, thêm u sầu, nhức hết cả đầu",
+    "Thay vì ngồi đó hứng buồn rầu",
+    "Hãy mang câu ca này xóa hết đi",
+    "Mối tình đầu quá trớn, ta nên dừng",
+    "Từng ngàn câu hứa phôi phai, giờ này người đang nhấp môi ai? (Ah-ah-ah)",
+    "Nỗi đau này quá lớn, anh chưa từng",
+    "Vậy thì tại sao? (Ah-ah-ah-ah)",
+    "Mối tình đầu quá trớn, ai cũng từng",
+    "Từng là từng ôm gối bên nhau giờ lại tặng nhau vết thương sâu (Ooh-ah-ah-ah)",
+    "Nỗi nhớ này quá lớn, xin em đừng dằn vặt tim anh",
+    "Vậy thôi kết thúc cho nhanh!",
+    "Một, hai bước, nhìn về phía trước",
+    "Một, hai bước, chuyện buồn ta lướt (Vậy thôi, kết thúc cho nhanh)"
+        ],
+        fullSong: [
+          "Ngây thơ mà, anh đã nghĩ từng đẹp y như là mơ mà (Mơ mà)",
+    "Đau vạn lần nhưng anh vẫn muốn là nạn nhân (What?) không ai có thể níu chân vì em, anh thành ngáo ngơ mà, baby (Drama)",
+    "Yêu nhưng đôi lúc lại không cần ghen, không cần biết",
+    "Và cho em tâm thế đúng là mối tình đầu tiên",
+    "Yêu không phanh, cùng em đi chung bước",
+    "Nhưng mà sao cứ nhắc lại là xót ở trong anh?",
+    "Tình đầu mong manh như lá lìa cành",
+    "Như trăng giữa mặt hồ, sóng đánh, xô nghiêng, chẳng thể vẹn nguyên (Vẹn nguyên)",
+    "Cắt đứt đôi tình duyên dưới ánh trăng tàn (Ah)",
+    "Chẳng còn những tiếng thở than (Ah), yeah",
+    "Nhìn vào đôi mắt sâu này, em có tin rằng chúng ta hợp nhau?",
+    "Thế nên đừng làm quá trớn, đừng làm quá trớn chuyện gì",
+    "Từng lời nói nên nhẹ nhàng, thấm thía, chuyện buồn dễ đến rồi đi",
+    "Đừng hoang mang, thêm u sầu, nhức hết cả đầu",
+    "Thay vì ngồi đó hứng buồn rầu",
+    "Hãy mang câu ca này xóa hết đi",
+    "Mối tình đầu quá trớn, ta nên dừng",
+    "Từng ngàn câu hứa phôi phai, giờ này người đang nhấp môi ai? (Ah-ah-ah)",
+    "Nỗi đau này quá lớn, anh chưa từng",
+    "Vậy thì tại sao?",
+    "Mối tình đầu quá trớn, ai cũng từng",
+    "Từng là từng ôm gối bên nhau, giờ lại tặng nhau vết thương sâu",
+    "Nỗi nhớ này quá lớn, xin em đừng dằn vặt tim anh",
+    "Vậy thôi kết thúc cho nhanh!",
+    "Từng ngàn câu hứa phôi phai, giờ này người đang nhấp môi ai?",
+    "Vậy thì tại sao? (Oh-oh-oh-oh-oh)",
+    "Từng là từng ôm gối bên nhau, giờ lại tặng nhau vết thương sâu (Ooh-oh-ooh-woah)",
+    "(Thôi kết thúc cho nhanh)",
+    "(Vậy thôi kết thúc cho nhanh)",
+    "Một, hai bước, nhìn về phía trước",
+    "Một, hai bước, chuyện buồn ta lướt (Vậy thôi, kết thúc cho nhanh)"
+        ]
+      },
+      "Hermosa": {
+        chorus: [
+           "Lạc-lạc-lạc-lạc vào sâu trong mắt em",
+    "Nửa ly sao say mèm với gã si tình, trót yêu quên mình",
+    "Đ-đừng-đừng-đừng ngại cho anh biết tên",
+    "Người đâu sao thể quên cứ theo em hoài, nhưng lại chẳng thể lên tiếng",
+    "Từng ngày trôi qua cứ ôm cây đàn",
+    "Tịch tịch tình tang nhớ nhung cô nàng",
+    "Có lẽ là do ý duyên ông trời",
+    "Anh-anh biết phải làm sao, chẳng biết phải làm sao, oh-woah, ooh-woah",
+    "Hola hermosa, tựa như tranh vẽ",
+    "Làm cho trái tim anh rung động không ngừng, hằng đêm thao thức",
+    "Từ khi thấy em anh chỉ muốn nói là \"đừng đi nhanh quá\"",
+    "Đừng vội vàng xa rời đôi mắt anh đang si tình",
+    "Muốn bên em đi khắp thế gian này"
+        ],
+        fullSong: [
+           "Baby, đang ở đâu? Send thông tin cho anh chạy qua, yah",
+    "Dân chơi không sợ mưa, anh cũng không quan tâm đường xa, yah",
+    "Give you all my love, bao gian nan anh không ngại va",
+    "Mấy cậu đang tán em không đủ trình độ thi tốt nhất nên dẹp ra",
+    "Bảnh giai lên hình như fashion icon, có thể viết về em in all of my song",
+    "Hát với em khúc ca mỗi khi ta trên đường về",
+    "Nhưng mà sorry babe, anh không quen đưa ra những câu hẹn thề",
+    "Muốn em ở bên mình, mỗi đêm ta cùng tâm tình",
+    "Baby you're the one and only (Shawty)",
+    "Khi cơn mưa rơi âm thanh đang vang bên hiên nhà",
+    "Hãy cứ làm những thứ mà em muốn",
+    "Nắm tay ta cùng vui đùa, hãy cứ ôm vào anh này",
+    "Tiễn hết đống phiền lo kia ra đi",
+    "Baby để cho anh được hôn nàng, như đang ở trên thiên đàng",
+    "Trong đâu anh chẳng còn phải lo chi, yes sir",
+    "Hola hermosa, tựa như tranh vẽ",
+    "Làm cho trái tim anh rung động không ngừng, hằng đêm thao thức",
+    "Từ khi thấy em anh chỉ muốn nói là \"đừng đi nhanh quá\"",
+    "Đừng vội vàng xa rời đôi mắt anh đang si tình",
+    "Muốn bên em đi khắp thế gian này",
+    "Hola hermosa-mosa-mosa",
+    "Nàng như thắp sáng cả bầu trời",
+    "Chỉ là lỡ say mê em rồi",
+    "Chẳng cần châu báu ở trên đời",
+    "Hola hermosa-mosa-mosa-ah-ah-ah",
+    "Hooh-ooh-ooh-ooh-ooh",
+    "Này em à, hãy cho anh cơ hội",
+    "Lại gần và nắm tay một chút thôi, đừng để tim anh đơn côi",
+    "Chẳng mong cho chuyện tình mình sẽ thành lỡ làng",
+    "Để lại ngại ngùng ở phía sau bước đến bên em, y-yeah-eh-yeah",
+    "Hola hermosa, trông em như là model",
+    "You takin' the photo, anh tưởng là nàng Mona (Mona)",
+    "Mấy gã ngoài kia chỉ săm soi em vào số đo",
+    "Còn anh chỉ muốn số của em không còn là số lạ",
+    "(Yeah) Anh sẽ pull up mỗi khi em nhắn là có nhà (Hử)",
+    "Đưa đi ăn uống hoặc làm nail hoặc là spa",
+    "Giọng anh dát vàng, tông toàn đô với cả la",
+    "(Brr) Tử tế anh có đủ anh nói thật không phải ngoa (Hey!)",
+    "(Hola hеrmosa)",
+    "Hola hermosa, tựa như tranh vẽ (Ah)",
+    "Làm cho trái tim anh rung động không ngừng, (Ah-ah) hằng đêm thao thức",
+    "Hola hеrmosa-mosa-mosa",
+    "Nàng như thắp sáng cả bầu trời (Cả bầu trời)",
+    "Chỉ là lỡ say mê em rồi (Mê em rồi)",
+    "Chẳng cần châu báu ở trên đời (Ở trên đời)",
+    "Hooh-ooh-oh-oh-ooh-woah"
+        ]
+      },
+      "MRT": {
+        chorus: [
+           "Mặt trời dần xa khỏi nơi này",
+    "Là nơi mà ta từng yêu rất đậm sâu",
+    "Chỉ một câu nói mà chẳng thể quay đầu",
+    "Giữ trong tim này một cơn đau, rằng ngày mai ta sẽ không bên nhau",
+    "Cả đời này anh nợ em lời xin lỗi, khi tình yêu dần lạc lối",
+    "Anh biết anh chẳng giữ được đâu",
+    "Anh không muốn thêm một lần nhìn em khóc",
+    "Nên anh sẽ tự mình mang theo bao tiếc nuối",
+    "Đoàn tàu lăn bánh chia đôi cả thế giới, hai người hai khoảng trời mới",
+    "Mong cho em về nơi ánh dương ngập tràn",
+    "Có lẽ quá muộn màng, ta đã lỡ lạc nhau thật rồi"
+        ],
+        fullSong: [
+          "Từng là lời hứa của cả thanh xuân",
+    "Sao giờ nói quên là quên?",
+    "Anh ngồi xóa đi biệt danh ta đã đặt tên",
+    "Mình từng cho nhau là cả thế giới",
+    "Nhưng giờ thế giới ấy ở đâu?",
+    "Chỉ còn thấy nhau, ở cuối ga trên đoàn tàu",
+    "Nước mắt em cũng đã tuôn rơi thay cho câu trả lời, anh biết đã quá muộn rồi",
+    "Khi trạm ga tàu đi thật xa nơi cả hai từng qua, chẳng còn gì giữa chúng ta",
+    "Tiếc nuối anh đành mang, đánh mất duyên trời ban",
+    "Nếu có lỡ mai sau gặp lại, ta có thể gặp lại trong mơ",
+    "Nhìn lại từng khung kính, bỗng thấy nỗi nhớ cứ kéo đến anh với những ký ức",
+    "Chuyện tình mình rẽ đôi, anh không thể lau giọt buồn",
+    "Vương đọng trên mi em rơi, tới đây thôi",
+    "Anh tập quen từ lâu niềm đau để biết đường cho lần sau, quá đủ rồi",
+    "Đến một chân trời mới và chấp nhận với niềm đau mà thôi, ooh-ooh",
+    "Mặt trời dần xa khỏi nơi này (Này)",
+    "Là nơi mà ta từng yêu rất đậm sâu, hooh-ooh",
+    "Chỉ một câu nói mà chẳng thể quay đầu",
+    "Giữ trong tim này một cơn đau, rằng ngày mai ta sẽ không bên nhau, oh-woah",
+    "Cả đời này anh nợ em lời xin lỗi, khi tình yêu dần lạc lối",
+    "Anh biết anh chẳng giữ được đâu (Anh không thể giữ)",
+    "Anh không muốn thêm một lần nhìn em khóc",
+    "Nên anh sẽ tự mình mang theo bao tiếc nuối (Bao tiếc nuối)",
+    "Đoàn tàu lăn bánh chia đôi cả thế giới, hai người hai khoảng trời mới",
+    "Mong cho em về nơi ánh dương ngập tràn",
+    "Có lẽ quá muộn màng, ta đã lỡ lạc nhau thật rồi",
+    "Hoh-ooh-woah",
+    "Những ký ức hôm nay trong anh phải đặt ở lại đây thôi (Ở lại)",
+    "Phải làm sao để anh thức giấc? (Thức giấc, thức giấc)",
+    "Dù anh đã cố gắng nhắm mắt nuốt thật chặt nỗi đau, hoh",
+    "Quay về nơi tình yêu bắt đầu, chẳng thể gặp (Gặp)lại (Lại) nhau (Nhau) nữa đâu (Wooh-hooh)",
+    "(Cả đời này anh nợ em lời xin lỗi)",
+    "Anh biết anh chẳng giữ được đâu, woah-oh",
+    "Nên anh sẽ tự mình mang theo bao tiếc nuối",
+    "Khi nắng đã dần tan, hãy cứ để thời gian trả lời"
+        ]
+      },
+      "Kim Phút, Kim Giờ": {
+        chorus: [
+          "Vậy đây là phút giây cuối thật sao?",
+    "Sau bao nhiêu lần em nói, đây sẽ là đêm cuối cùng gặp nhau",
+    "Ôm trong lòng là những thành tích, giờ đã thành vô nghĩa",
+    "Nụ cười đã dần tắt, nhợt nhạt cả thần sắc, bàn tay nắm chặt vào nhau",
+    "Em cho anh biết đi, baby, anh và em làm sai gì?",
+    "Để cho cuộc đời hành hạ hai ta, như thể trái tim này chai lì",
+    "Đồng hồ cứ tích tắc trôi, anh biết rằng đã không kịp rồi",
+    "Giá như những lần em muốn cạnh bên, anh đã không \"Hẹn gặp ngày mai đi\" (Mai đi)",
+    "Đã từng nói rằng, \"Anh không muốn mất thời gian để tranh cãi\"",
+    "Giờ thì chỉ có thể quỳ xuống và ước cho thời gian sẽ trôi qua chậm lại",
+    "Anh chỉ muốn mang hết số tiền trong bank chỉ để đổi lấy một phút mà thôi",
+    "Mua được chiếc đồng hồ trong mơ nhưng bây giờ chỉ mong rằng nó sẽ chết đi mà thôi",
+    "Anh còn nhớ về những năm tháng mà cái tên của em không gắn liền với một kỷ niệm nào cả",
+    "Huh, mắc cười ha? Giờ thì xóa biệt danh là ta đã có thể trở thành hai người xa lạ rồi",
+    "Mình phải chia tay thật sao? Còn nhiều lời hứa từng trao",
+    "Giờ đây anh phải thế nào? Đứng nhìn em cùng người ta sao?",
+    "Chẳng muốn phải ôm khát vọng, rồi lỡ buông tay bỏ mặc em ở lại phía sau",
+    "Ước cho kim đồng hồ kia ngừng để ta sẽ mãi đứng im",
+    "Chẳng phải đuổi theo điều gì"
+        ],
+        fullSong: [
+         "Ah, where are you, my baby? Nghe anh mà quay lại ngay đi",
+    "Bao nhiêu tình yêu em cần để đừng buông bàn tay đi?",
+    "Ta đã làm sai điều gì, em? Anh đã phải thức thật nhiều đêm, ah",
+    "Anh hay tự yên lòng mình là chẳng còn duyên, là maybe",
+    "Sao ông trời không cho mình yêu ở một đoạn sau trong đời?",
+    "Ngày mà mình không hay mơ mục tiêu xa vời?",
+    "Yeah, hãy quên đi anh là ai (Quên) miễn là em sẽ không nhìn anh như là một trong những lựa chọn sai (Please)",
+    "Ghìm giọt lệ đằng sau mi, dành một ngày cho nhau đi",
+    "Thật lòng là anh không cam tâm ngày mai ta không gặp lại (Oh-oh-oh-oh)",
+    "Vì mặt trời và mây lên sẽ chẳng cầm được tay em",
+    "Liệu bầu trời kia mưa rơi có phải đang giữ chân mình lại?",
+    "Em muốn nắm tay anh lần cuối cùng",
+    "Hãy làm ngay đi! Cho anh được ôm em một lần cuối thôi",
+    "Mau ôm rồi em đi!",
+    "Hôm nay thật ra là anh đây không dám nhắm mắt dù chỉ một lần",
+    "Em đi và sẽ ôm lấy những phút cuối đặt tận vào trong lòng",
+    "Em cũng đâu có nói gì, lặng nhìn anh đấy, anh cứ nói đi",
+    "Baby, I'm not cryin', nhưng nói ra sợ nước mắt ở trên khóe mi",
+    "Chẳng còn giống y như lần đầu em có muốn em như vậy đâu?",
+    "Không đi tiếp, thôi, đừng đợi, đồng hồ đang quay, chẳng biết ngừng đâu",
+    "Đến giờ, lại đếm giờ, và em không muốn giải thích",
+    "Cho anh thêm thời gian, để rồi có lỗi, đó là tại mình",
+    "Người lặng nhìn vấn vương",
+    "Người nặng tình vẫn thương",
+    "Dừng lại đây là do khoảng cách hai ta",
+    "Mình phải chia tay thật sao? Còn nhiều lời hứa từng trao",
+    "Giờ đây anh phải thế nào? Đứng nhìn em cùng người ta sao?",
+    "Chẳng muốn phải ôm khát vọng, rồi lỡ buông tay bỏ mặc em ở lại phía sau",
+    "Ước cho kim đồng hồ kia ngừng để ta sẽ mãi đứng im",
+    "Chẳng phải đuổi theo điều gì",
+    "Biết trước kết thúc ta sẽ xa, nhưng bao đêm suy tư, anh dặn lòng đừng đau quá",
+    "Ngày mình chẳng thể ở bên nhau, chưa một giây trôi nào anh có thể nghĩ đến được",
+    "Tại sao phải là hôm nay? Cứ biến mất thôi, sẽ chẳng thể đau như này",
+    "Đã bao giờ cuộc tình này nằm đầu dòng và điền vào mai sau của nhau?",
+    "Giờ đây anh phải thế nào? Đứng nhìn em cùng người khác sao?",
+    "Chẳng muốn phải ôm khát vọng (Ooh-woah-ah-woah), rồi lỡ buông tay bỏ mặc em ở lại phía sau",
+    "Ước chi kim đồng hồ kia ngừng để ta sẽ mãi đứng im",
+    "(Ho-ho-ooh-woah) Chẳng phải đuổi theo điều gì (Nah-ooh-woah, hah-hah!)",
+    "Sẽ chỉ còn lại anh mang theo nuối tiếc về một nơi xa (Ooh-ooh)",
+    "Hah-ah, hah-ah, không có em sau này (Có em ở đây)",
+    "Giờ phải làm sao níu lại từng giây trôi? (Giây trôi)",
+    "Ooh-ooh, giờ đây anh phải thế nào đây?",
+    "Chẳng muốn phải ôm khát vọng, rồi lỡ buông tay em, yeah"
+        ]
+      },
+      "Thế Giới Của Anh": {
+        chorus: [
+          "Trở về ngày ôm bao mơ mộng trong tim",
+    "Thoáng chốc bỗng trở nên lặng im",
+    "Để cho anh thấy được lúc ấy, thế giới trong anh tựa như sáng lên",
+    "Khi em vừa đến đây",
+    "Cả cơn giông bỗng hóa, mưa tạnh mây tan",
+    "Chỉ vì một câu nói: “Rằng em sẽ ở bên cạnh anh cho đến cuối cùng, ôm nhẹ cơn đau\"",
+    "Vì anh chôn sâu nhiều ưu phiền trong mắt",
+    "Con tim còn mang đầy vết cắt",
+    "Từng đêm lẻ loi chờ mong",
+    "Vượt ngàn tâm tư mây giăng kín u sầu, chỉ còn anh với em",
+    "Khi anh buông cả thế giới, em mang nụ cười đến với",
+    "Đợi anh như mơ, êm đềm như thơ",
+    "Là em đã sưởi ấm hy vọng trong trái tim anh",
+    "Cho ta thêm một thế giới, cùng nhau",
+    "Đan chặt từng ước ao, cảm xúc dâng trào",
+    "Anh đã tin vào tình yêu, giây phút ấy rực rỡ hơn bao điều"
+        ],
+        fullSong: [
+          "Mưa còn rơi ở bên ngoài hiên, họ kêu mình điên vì do đêm ngày ca hát",
+    "Chỉ một mình mình ngồi yên nghe tiếng chim, anh feel nhạc (La-la)",
+    "Tìm về một vùng bình yên nơi không có chút ưu phiền",
+    "Nếu như anh không phiền em, thôi mời bé sang nơi đây cùng anh chơi",
+    "Nhìn hạt sương (Ooh-ah) ban mai kia long lanh (Ban mai, ooh-ah), mắt em kiêu sa và lấp lánh (Lấp lánh)",
+    "Trọn đời về được cùng anh đi khắp muôn nơi trong lành",
+    "Và cứ thế khúc hát đó cho tình yêu đôi ta chắp cánh",
+    "Xin người luôn giữ mãi một giấc mơ",
+    "Vì anh chôn sâu nhiều ưu phiền trong mắt",
+    "Con tim còn mang đầy vết cắt",
+    "Từng đêm lẻ loi chờ mong",
+    "Một ngày không mang tâm tư trĩu u sầu, bên cạnh em",
+    "Khi anh buông cả thế giới, em mang nụ cười đến với",
+    "Đợi anh như mơ, êm đềm như thơ",
+    "Là em đã sưởi ấm hy vọng trong trái tim anh",
+    "Cho ta thêm một thế giới, cùng nhau",
+    "Đan chặt từng ước ao, cảm xúc dâng trào",
+    "Anh đã tin vào tình yêu, giây phút ấy rực rỡ hơn bao điều",
+    "Yeah, woah",
+    "Quá nhiều lần buồn phiền, buồn phiền",
+    "Đôi khi anh buông đi mất nụ cười thật hiền",
+    "Đôi chân đôi tay anh đây đang cuốn tìm vào đồng tiền",
+    "Đôi khi bên trong con tim anh đây toàn là điều xấu xí",
+    "Đến một ngày mình tìm được nàng",
+    "Baby anh vui như thấy mình tìm được một cục vàng",
+    "Con tim anh đây như đang kêu vang lên",
+    "Anh đang kêu vang lên",
+    "Anh đã tin vào tình yêu, (Tình yêu) giây phút ấy rực rỡ hơn bao điều",
+    "Yeah I know, too many things wanna bring me down But you make me proud of myself, and believe in myself"
+        ]
+      },
+      "Sao Hạng A": {
+        chorus: [
+          "Rảnh không, baby? (Baby, baby) Anh phi qua này (Ooh-woah, ooh-woah)",
+    "Em thèm đồ tây (진짜?) để đưa em qua Hàn (Là-là Korea)",
+    "Có một sự thật là tính hơi low-key nhưng khi cạnh em, mất luôn lầm lì",
+    "Suốt bấy lâu nay sống trong lý trí nhưng bên cạnh em thì luôn easy",
+    "Anh không nói dối bao giờ đâu (Yeah, anh không)",
+    "Mà hào quang phát ra đằng sau (Khi em tới)",
+    "Sao em có thể không biết em lung linh được như nào?",
+    "Bình thường em không có thói quen soi gương hay sao?",
+    "Thề là thấy em giây đầu tiên, anh đã muốn đưa em lên thuyền",
+    "Baby bấy lâu nay ở đâu? Sao giờ mới được nhìn thấy nhau?",
+    "Thật lòng những ngôi sao ngoài kia chẳng có ai lọt vào được mắt anh",
+    "Xứng tầm được làm một ngôi sao ở tận trên cao nếu anh ngay bên cạnh"
+        ],
+        fullSong: [
+              "Baby girl, be mine (You), đó là English",
+    "Làm người yêu anh nha em, đó là tiếng Việt",
+    "Mà từ xa em y như người nổi tiếng thiệt",
+    "Nhìn muốn tăng huyết áp, cần một hôm đi xông hơi",
+    "Cần phải nhà để nuôi em, cũng chơi (For sure)",
+    "Em có trốn ra đại dương, anh cũng bơi (Wow-wow-wow)",
+    "Visa đây, baby, nếu em thích cứ cà tiền và xe của anh, em cứ đem về nhà giữ nha",
+    "Anh không nói dối bao giờ đâu (Yeah, anh không)",
+    "Mà hào quang phát ra đằng sau (Khi em tới)",
+    "Sao em có thể không biết em lung linh được như nào?",
+    "Bình thường em không có thói quen soi gương hay sao?",
+    "Thề là thấy em giây đầu tiên, anh đã muốn đưa em lên thuyền",
+    "Baby bấy lâu nay ở đâu? Sao giờ mới được nhìn thấy nhau?",
+    "Thật lòng những ngôi sao ngoài kia chẳng có ai lọt vào được mắt anh",
+    "Xứng tầm được làm một ngôi sao ở tận trên cao nếu anh ngay bên cạnh",
+    "Chắc chắn là hạng A-A-A",
+    "Phải là hạng A-A-A",
+    "Xứng đáng là A-A-A",
+    "Phải là hạng A-A-A-A",
+    "Vậy mà bấy lâu nay ở đâu? Giờ mới thấy nhau",
+    "Xứng tầm được làm một ngôi sao ở tận trên cao",
+    "Nếu anh ngay bên cạnh (Ah, look)",
+    "Fan anh trước giờ không hay linh tinh",
+    "Tỉ lệ chín ở trên mười, anh gặp lung la lung linh",
+    "Còn mình em, baby ơi, sao mà xinh hơn minh tinh? Làm anh rung ra rung rinh",
+    "Trong đầu anh, em xoay quanh bao tương tư anh vẽ ra như thằng overthinking, yeah, em ở đâu?",
+    "Sao lâu nay bao nhiêu là show, đâu thấy đâu?",
+    "Anh từ idol nhưng từ khi gặp em, sao anh giống như fan vậy?",
+    "Chuẩn bị giấy tờ, baby, let me sign, biết là cuối ngày, em sẽ kêu tên ai",
+    "Ai khen em bé như hoa hậu chưa? Đang yêu ai không? Để mà biết anh còn cưa, yeah",
+    "I don’t falling in love with the famous, (Nah) anh làm cho kim cương thô thành VVS",
+    "Mọi người ở xung quanh anh đều thành sao so if you like, anh có thể làm em y hệt",
+    "Là em đi đến để gặp anh (Oh-oh-oh)",
+    "Em còn trong FC của anh (Oh-oh-oh)",
+    "Anh cũng biết hết fan của anh xung quanh toàn xinh đẹp",
+    "Nhưng mà lần đầu tiên khiến anh lung lay nhường này",
+    "Thật lòng những ngôi sao ngoài kia chẳng có ai lọt vào được mắt anh (Oh-oh-oh)",
+    "Xứng tầm được làm một ngôi sao ở tận trên cao nếu anh ngay bên cạnh (Say what?)",
+    "Nếu anh ngay bên cạnh",
+    "Thề là thấy em giây đầu tiên anh đã muốn đưa em lên thuyền",
+    "Thề là thấy em giây đầu tiên anh đã muốn đưa em lên thuyền (Woah!)",
+    "Baby bấy lâu nay ở đâu? Sao giờ mới được nhìn thấy nhau? (Yeah-yeah!)",
+    "Chắc chắn là hạng A-A-A (Hey!)",
+    "Phải là hạng A-A-A (Ho!)",
+    "Xứng đáng là hạng A-A-A (Hey!)",
+    "Sao hạng A-A-A-A-A (Whoo!)",
+    "A-A-A-A-A",
+    "(Sao hạng A)"
+        ]
+      },
+      "Dancin' My Way": {
+        chorus: [
+          "Mới thức giấc sao anh lại say, mm-mm",
+    "Cho anh qua đón em chiều nay",
+    "Giữa lấp lánh khi âm nhạc lên nhưng sao anh chỉ mong thấy em",
+    "Ey, gặp em cũng đã từ lâu",
+    "Đêm về lại tương tư em thêm rất đậm sâu",
+    "Trong anh đang có rất nhiều điều muốn nói với em, với em",
+    "Từng giờ từng phút lại trôi, xin em hãy bên anh thêm một lần này thôi",
+    "Xin đừng quay đi, cho lòng anh lại thêm nghĩ suy",
+    "Nhiều đêm anh vẫn cứ một mình",
+    "Chỉ muốn có bóng dáng của em cạnh bên, ooh-why",
+    "Bầu trời sao chẳng xinh đẹp bằng ánh mắt em (Let's dance with me)",
+    "Gạt nỗi lo đi, cầm lấy tay anh baby, dancin' my own way",
+    "Ngàn câu ca đang thay anh nói lời yêu (Tận sâu trái tim anh này)",
+    "Lạc giữa tinh hà, chỉ có riêng ta mình cùng khiêu vũ trong đêm nay",
+    "Theo nhịp đôi chân cứ đắm say",
+    "Tặng trao hết cho những mơ mộng anh dành nàng"
+        ],
+        fullSong: [
+           "Baby cho anh xin phép mời em, dancing in the moonlight",
+    "Chỉ việc nép vào anh, if you're ready tonight",
+    "Cởi bỏ hết ngại ngùng, please don't be too shy",
+    "Chỉ mỗi em, I wanna say",
+    "Ngàn vì tinh tú bủa vây nhưng anh chỉ xoay quanh em",
+    "Anh không nói dối, lil' shawty girl thử tin anh xem",
+    "Người duy nhất làm anh quên cả ngày hay đêm",
+    "Chẳng còn muốn bên ai ngoài em",
+    "Nàng tựa ánh trăng với anh là duy nhất",
+    "Chỉ nhìn về mỗi em trong hàng trăm nghìn ánh mắt",
+    "Hoà quyện với nhau ở trong phút giây này",
+    "Cơ hội riêng mình anh được quyền nắm lấy",
+    "Dành trọn spotlight dù trong màn đêm tối",
+    "Điệu nhạc này cũng không ngọt được như lời em nói",
+    "In the moonlight, I'll make you alright (One, two, three, four)",
+    "Gạt nỗi lo đi, cầm lấy tay anh baby, dancin' my own way",
+    "Ngàn câu ca đang thay anh nói lời yêu (Tận sâu trái tim anh này)",
+    "Lạc giữa tinh hà, chỉ có riêng ta mình cùng khiêu vũ trong đêm nay",
+    "Theo nhịp đôi chân cứ đắm say",
+    "Tặng trao hết cho những mơ mộng anh dành nàng",
+    "Giữ lấy những cảm xúc mong manh nay",
+    "Ánh mắt khiến anh nghĩ suy đêm ngày",
+    "Anh sẽ đưa đôi tay ôm trọn từng phút giây trong giấc mơ anh vẫn luôn nghĩ tới",
+    "Hãy cảm nhận từng tiếng ca mà anh viết lên",
+    "Để cho riêng mình em thôi",
+    "Và hy vọng nụ cười em sẽ luôn giữ mãi trên môi",
+    "Tay chạm tay và môi chạm môi",
+    "Anh chỉ mong thời gian ngừng trôi",
+    "Xoay vòng xoay vòng ta thành đôi, dancin' my way",
+    "Gạt nỗi lo đi, cầm lấy tay anh baby, dancin' my own way (Oh-oh)",
+    "Ngàn câu ca đang thay anh nói lời yêu (Tận sâu trái tim này)",
+    "Lạc giữa tinh hà, chỉ có riêng ta mình cùng khiêu vũ trong đêm nay (Para-paba)",
+    "Tay chạm tay và môi chạm môi (Hey!)",
+    "Anh chỉ mong thời gian ngừng trôi (Ho!)",
+    "Xoay vòng xoay vòng ta thành đôi, (Dancin' my way, dancin' my way) dancin' my way"
+        ]
+      },
+      "Love Sand": {
+        chorus: [
+           "Giờ thì ta chỉ cần cùng nhắm mắt, đan tay",
+    "Ôm lấy nhau thật lâu không rời, mình sẽ có với nhau giây phút tuyệt vời",
+    "Nằm dưới cát đêm nay, bao thứ kia trên đời chẳng cần gì khi đã có em rồi"
+        ],
+        fullSong: [
+          "Nhìn vào ánh mắt em một lần, đôi môi ta sát bên thật gần",
+    "Anh nghe giọng em ở bên cạnh tai làn da còn thơm hơn hương hoa",
+    "Cho anh chăm sóc em, baby",
+    "Thứ tình yêu em cần sẽ là anh luôn cạnh bên mỗi đêm",
+    "Nói hết ra điều em hằng đêm mộng mơ bấy lâu nay",
+    "Kể cả khi gọi tên thật to cũng chẳng có ai hay",
+    "Đâu cần phải lo, ngày mai mình đâu ở nơi đây",
+    "Ngoài bầu trời đấy ra, chẳng còn một người nào thấy ta",
+    "Nói với anh là người sẽ mãi ở đây đi chỉ thuộc về mỗi anh mà (Yeah, chỉ thuộc về mỗi anh mà)",
+    "Quá khứ em thế nào anh cũng chẳng quan tâm xin đừng nhắc tới anh ta (Yeah)",
+    "Giờ thì ta chỉ cần cùng nhắm mắt, đan tay",
+    "Ôm lấy nhau thật lâu không rời, mình sẽ có với nhau giây phút tuyệt vời",
+    "Nằm dưới cát đêm nay, bao thứ kia trên đời chẳng cần gì khi đã có em rồi",
+    "Khẽ vào tai (Yeah-eh), em đang cần ai? (Oh-oh)",
+    "Don't you ever lie, babyboo, ooh-ooh-ooh-ooh-ooh-ooh-ooh-ooh",
+    "Ta cùng nhau quên đi ngày mai (Ey, yah)",
+    "Phone cho anh khi mà em yêu đang cô đơn đang cần vơi đi những hằn khô trên môi",
+    "Không cần đi đâu xa, bên ngoài hay sofa chỉ cần anh và em nằm bên nhau thôi qua đêm đen",
+    "Baby bite me with them fangs",
+    "Sao ta không cho những ngón tay kia được đan xen?",
+    "Đưa tay lên xuống như đây là đan len",
+    "Anh chỉ cần một người thật lòng ở ngay bên cho con tim chìm sâu đắm say thêm",
+    "Ta buông lơi và ngã ra đằng sau cuốn lấy nhau xoay một vòng như bộ phim vẫn hay xem",
+    "Hai ta không cần, đi ra căn phòng",
+    "Khắp ở trên giường, thêm những sắc nồng",
+    "Em không tìm được một phút giây nào để thở dài được đâu",
+    "Nói với anh là người sẽ mãi ở đây đi chỉ thuộc về mỗi anh mà",
+    "Quá khứ em thế nào anh cũng chẳng quan tâm xin đừng nhắc đến anh ta (Hah-ah-ah, yeah)",
+    "Khẽ vào tai (Yeah-eh), em đang cần ai? (Hoh-oh)",
+    "Don't you ever lie, babyboo ooh-ooh-ooh (Hey)",
+    "Ta cùng nhau quên đi ngày mai, no-oh (Yeah)",
+    "Ta cùng nhau, ta cùng nhau quên đi ngày mai mai mai mai",
+    "Don't you ever lie, don't you ever lie (yeah)",
+    "Ta cùng nhau quên đi ngày mai"
+        ]
+      },
+
+      "50 Cuộc Gọi Nhỡ": {
+        chorus: [
+         "Là hàng triệu nỗi nhớ anh đem chôn giấu trong nơi màn đêm (Woah-ooh-woah)",
+    "Là từng cuộc gọi nhỡ không ai bắt máy, năm mươi lần đếm",
+    "Với anh đáng sợ đó là khi nghe tiếng chuông reo",
+    "Thường là nỗi buồn bấy lâu nay mang theo, lại liên hồi rung lên",
+    "Giờ chỉ mình anh đếm thôi, chạy bao lâu mới đến nơi?",
+    "Để kịp hẹn cùng hạnh phúc bấy lâu anh chẳng dám đối diện",
+    "Năm mươi cuộc gọi giờ thay cho đáp án cuối cùng",
+    "Chọn khóc thay cho cười, chọn kết thúc một nỗi đau"
+        ],
+        fullSong: [
+          "Chỉ khi thức trắng mới biết đêm dài",
+    "Để nỗi nhớ nhân một thành hai",
+    "Vệt ký ức kia lăn dài mãi, woah-hoh",
+    "Nếu lúc đó anh không buông tay, liệu kết cục có ổn hơn?",
+    "Nếu lúc đó ta không lung lay để giữ trọn vẹn từ thương",
+    "Thương thì ai chẳng thương mà buông thì vẫn phải buông",
+    "Vì số phận thường chẳng như ta muốn, hah-ah",
+    "Là hàng triệu nỗi nhớ anh đem chôn giấu trong nơi màn đêm (Woah-ooh-woah)",
+    "Là từng cuộc gọi nhỡ không ai bắt máy, năm mươi lần đếm",
+    "Với anh đáng sợ đó là khi nghe tiếng chuông reo",
+    "Thường là nỗi buồn bấy lâu nay mang theo, lại liên hồi rung lên",
+    "Giờ chỉ mình anh đếm thôi, chạy bao lâu mới đến nơi?",
+    "Để kịp hẹn cùng hạnh phúc bấy lâu anh chẳng dám đối diện",
+    "Năm mươi cuộc gọi giờ thay cho đáp án cuối cùng",
+    "Chọn khóc thay cho cười, chọn kết thúc một nỗi đau",
+    "Nỗi nhớ trong anh là bao nhiêu? (Bao nhiêu?)",
+    "Năm mươi cuộc gọi là bao nhiêu (Woah-oh)",
+    "Suốt đêm thinking about you",
+    "Chỉ là chắc có lẽ duyên ta nay đi ngược chiều",
+    "Đau thay anh cứ mãi bị lừa gạt mà đâu hay",
+    "Giờ đành thôi vứt kỷ niệm xưa trong đám cháy (DG Boy)",
+    "Buồn vì con tim anh từng đã trao trọn mà giờ phải chọn cô đơn (You)",
+    "Tưởng chừng dừng lại thì sẽ bớt đau lòng vùi mình trong con sóng lớn",
+    "Off the phone không nghe một câu, giữ lấy đi baby, anh chẳng cần đâu",
+    "Thứ đã chết là tình yêu ta ngày đầu",
+    "Nghìn điều buồn sầu anh vội thả vào mưa ngâu (Hah-ah-ah-hah)",
+    "Là hàng triệu nỗi nhớ anh đem chôn giấu sau nơi màn đêm (Hah)",
+    "Sợ là nỗi buồn bấy lâu nay mang theo, lại liên hồi rung lên, woah-hoh",
+    "Oh-hoh, ooh-woah-ooh-woah-ooh-woah-hoh (Hey)",
+    "Hằn sâu trong tim anh năm mươi nhát khâu",
+    "Cô đơn và anh chẳng còn khác nhau",
+    "Ghi vào giấy vì anh sợ khi nào đấy mình quên đi",
+    "Ngược dòng ký ức, tìm hình bóng em (Bóng em)",
+    "Rồi chính anh lại vụn vỡ nhìn người tan biến, ah-hah",
+    "Năm mươi nó cũng chẳng là bao nhiêu",
+    "Với tổn thương này chẳng là bao nhiêu, oh-woah",
+    "Là hàng triệu nỗi nhớ anh đem chôn giấu trong nơi màn đêm"
+        ]
+      },
+      "Mộng Duyên": {
+        chorus: [
+          "Mộng duyên giữa đôi ta, như cánh hoa nở trong đêm trăng tà",
+    "Tình yêu đến bên ta, nhưng chóng phai ngỡ như đoá Quỳnh Hoa",
+    "Là tiên nữ nơi đâu, hương sắc theo dấu ta đến tiêu sầu",
+    "Ngả nghiêng xiêu lòng say đắm muốn ngắm nhìn thật lâu",
+    "Mộng duyên suốt năm canh, mong dáng ai muốn buông chẳng nỡ đành",
+    "Gà gáy suốt đêm thanh, như cũng đang thấu cho nỗi lòng anh",
+    "Ngày cứ thế trôi nhanh, lưu luyến ai mải mê đến hiu quạnh",
+    "Hồn ta như lạc trong chốn nhân gian này",
+    "Chẳng mong có ai thấu được lòng anh",
+    "Khắc xuất, khắc xuất, nhập tình như mộng duyên",
+    "Tắc tíc, tắc tiếng lòng chờ ai xuất hiện",
+    "Khắc xuất, khắc xuất nhập tình như mộng duyên",
+    "Tắc tíc, tắc tiếng lòng chờ cơn mộng huyền"
+        ],
+        fullSong: [
+          "Duyên trời cho mình gặp nhau giữa nhân gian",
+    "Nhưng nợ đời đành đoạn đôi ta lỡ làng",
+    "Từng là vạn lời yêu cũng hoá tro tàn",
+    "Ôm vấn vương lưu lạc mộng trần trái ngang",
+    "Chén rượu ta từng nếm, chắt thành nỗi đau từng đêm",
+    "Chẳng thể nào ngừng đếm từng hồi ức khó quên",
+    "Con thuyền vẫn đợi bến, biết ai nhớ, ai đợi mong",
+    "Thiên lý tương ngộ năng huyễn duyên ly mộng",
+    "Hah-ah-ah-ah-ah-ah-ah-ah, ngóng trông bóng hình ai đã dần phai",
+    "Hah-ah-ah-ah-ah-ah-ah-ah-ah-ah, nỗi buồn ai hay",
+    "Mộng duyên giữa đôi ta, như cánh hoa nở trong đêm trăng tà",
+    "Tình yêu đến bên ta, nhưng chóng phai ngỡ như đoá Quỳnh Hoa",
+    "Là tiên nữ nơi đâu, hương sắc theo dấu ta đến tiêu sầu",
+    "Ngả nghiêng xiêu lòng say đắm muốn ngắm nhìn thật lâu",
+    "Mộng duyên suốt năm canh, mong dáng ai muốn buông chẳng nỡ đành",
+    "Gà gáy suốt đêm thanh, như cũng đang thấu cho nỗi lòng anh",
+    "Ngày cứ thế trôi nhanh, lưu luyến ai mải mê đến hiu quạnh",
+    "Hồn ta như lạc trong chốn nhân gian này",
+    "Chẳng mong có ai thấu được lòng anh",
+    "Khắc xuất, khắc xuất, nhập tình như mộng duyên",
+    "Tắc tíc, tắc tiếng lòng chờ ai xuất hiện",
+    "Khắc xuất, khắc xuất nhập tình như mộng duyên",
+    "Tắc tíc, tắc tiếng lòng chờ cơn mộng huyền",
+    "Đông Tây Nam Bắc, em giờ nơi đâu?",
+    "Không gian chia cắt, sao mình xa nhau?",
+    "Nhật Nguyệt tương khắc, anh chẳng buông đâu",
+    "Anh thua em chắc, no-no",
+    "Phong sương phủ kín khuất lối chàng",
+    "Vượt ngàn hải lý ta kiếm nàng",
+    "Gian nan bão tố cũng chẳng màng, hah-ah",
+    "Con thuyền vẫn đợi bến, biết ai nhớ ai đợi mong",
+    "Hah-hah-hah-hah-ah-ah-ah-ah, ngóng trông bóng hình ai đã dần phai",
+    "Hoh-oh-oh-oh-hoh-oh-oh-oh-oh-hah, nỗi buồn ai hay",
+    "Ngày cứ thế trôi nhanh lưu luyến ai mải mê đến hiu quạnh",
+    "Tắc tíc, tắc tiếng lòng chờ ai, chờ cơn mộng huyền"
+        ]
+      }
     };
 
-    const allTrackNames = Object.keys(songDatabase);
+    const allTrackNames = Object.keys(songDatabase);[cite: 5]
 
     // Preload all badge images silently in the background
     const rankImagePaths = [
@@ -685,29 +1357,48 @@
       "./Image/Rank_600.webp",
       "./Image/Rank_700.webp",
       "./Image/Rank_800.webp"
-    ];
+    ];[cite: 5]
     rankImagePaths.forEach((src) => {
       const img = new Image();
       img.src = src;
-    });
+    });[cite: 5]
 
     // --- GAME STATE VARIABLES ---
-    let score = 0;
-    let streak = 0;
-    let questionPool = []; // Pool of all available { track, line } pairs without duplicates
-    let answeredHistory = []; // Tracks every question answered in this round
+    let score = 0;[cite: 5]
+    let streak = 0;[cite: 5]
+    let questionCount = 0;
+    let chorusPool = [];
+    let fullSongPool = [];
+    let answeredHistory = [];[cite: 5]
 
-    // Build the non-repeating question pool
+    // Initialize two distinct question pools
     function initQuestionPool() {
-      questionPool = [];
+      chorusPool = [];
+      fullSongPool = [];
       answeredHistory = [];
-      allTrackNames.forEach(track => {
-        songDatabase[track].forEach(line => {
-          questionPool.push({ track, line });
-        });
+      questionCount = 0;
+
+      allTrackNames.forEach((track) => {
+        const chorusSet = new Set(songDatabase[track].chorus || []);
+
+        if (songDatabase[track].chorus) {
+          songDatabase[track].chorus.forEach((line) => {
+            chorusPool.push({ track, line });
+          });
+        }
+
+        if (songDatabase[track].fullSong) {
+          songDatabase[track].fullSong.forEach((line) => {
+            // Only add if not already present in the chorus
+            if (!chorusSet.has(line)) {
+              fullSongPool.push({ track, line });
+            }
+          });
+        }
       });
-      // Shuffle question pool randomly
-      questionPool.sort(() => 0.5 - Math.random());
+
+      chorusPool.sort(() => 0.5 - Math.random());
+      fullSongPool.sort(() => 0.5 - Math.random());
     }
 
     // 8 Tier Rank Badges
@@ -721,55 +1412,55 @@
         { threshold: 600, img: "./Image/Rank_600.webp" },
         { threshold: 700, img: "./Image/Rank_700.webp" },
         { threshold: 800, img: "./Image/Rank_800.webp" }
-      ];
+      ];[cite: 5]
 
       for (const tier of tiers) {
         if (finalScore < tier.threshold) {
-          return tier.img;
+          return tier.img;[cite: 5]
         }
       }
-      return "./Image/Rank_800.webp";
+      return "./Image/Rank_800.webp";[cite: 5]
     }
 
     // --- WELCOME SCREEN ---
     function showWelcomeScreen() {
-      const card = document.getElementById("game-card");
+      const card = document.getElementById("game-card");[cite: 5]
       card.innerHTML = `
         <div class="welcome-container">
           <div class="welcome-title">🎵 GUESS THE SONG</div>
-          <p class="welcome-subtitle">Game giúp bà con học thuộc lời trước khi đu concert</p>
+          <p class="welcome-subtitle">Thử thách trí nhớ lời bài hát Anh Trai "Say Hi"!</p>
 
           <div class="welcome-info-box">
             <div class="welcome-info-item">
-              <span class="welcome-info-icon">🎯</span>
-              <span>Đoán đúng bài hát từ từng câu lời bài hát ngẫu nhiên.</span>
-            </div>
-            <div class="welcome-info-item">
-              <span class="welcome-info-icon">🚫</span>
-              <span>Mỗi câu hỏi chỉ xuất hiện duy nhất 1 lần mỗi ván đấu.</span>
+              <span class="welcome-info-icon">🎶</span>
+              <span><strong>30 câu đầu tiên:</strong> Thử thách riêng các đoạn Điệp Khúc (Chorus).</span>
             </div>
             <div class="welcome-info-item">
               <span class="welcome-info-icon">🔥</span>
-              <span>10 điểm mỗi câu đúng. Sai 1 câu là dừng cuộc chơi!</span>
+              <span><strong>Từ câu 31 trở đi:</strong> Mở khóa toàn bộ các câu hát trong bài hát.</span>
+            </div>
+            <div class="welcome-info-item">
+              <span class="welcome-info-icon">🚫</span>
+              <span>Mỗi câu hát chỉ xuất hiện duy nhất 1 lần mỗi ván đấu.</span>
             </div>
             <div class="welcome-info-item">
               <span class="welcome-info-icon">🏆</span>
-              <span>Mở khóa huy hiệu độc quyền và ghi danh bảng xếp hạng.</span>
+              <span>10 điểm mỗi câu đúng. Sai 1 câu là dừng lại và ghi điểm!</span>
             </div>
           </div>
 
           <button class="btn-start" onclick="startGame()">BẮT ĐẦU CHƠI</button>
         </div>
-      `;
+      `;[cite: 5]
     }
 
     // --- START GAME ---
     function startGame() {
-      score = 0;
-      streak = 0;
+      score = 0;[cite: 5]
+      streak = 0;[cite: 5]
       initQuestionPool();
 
-      const card = document.getElementById("game-card");
+      const card = document.getElementById("game-card");[cite: 5]
       card.innerHTML = `
         <div class="status-bar">
           <div class="pill-badge score-badge">
@@ -781,92 +1472,104 @@
         </div>
 
         <div class="quote-box">
-          <div class="quote-label">🎵 Câu hát này nằm trong bài hát nào?</div>
+          <div class="quote-label" id="phase-label">🎵 Câu hát này nằm trong bài hát nào?</div>
           <div class="lyric-text" id="lyric-display">"..."</div>
         </div>
 
         <div class="options-grid" id="options-box"></div>
-      `;
+      `;[cite: 5]
 
-      nextTurn();
+      nextTurn();[cite: 5]
     }
 
     // --- NEXT QUESTION TURN ---
     function nextTurn() {
-      // If all questions are answered, end with victory
-      if (questionPool.length === 0) {
+      questionCount++;
+
+      let currentQ;
+
+      // Phase 1: First 30 questions draw strictly from the chorus pool
+      if (questionCount <= 30 && chorusPool.length > 0) {
+        currentQ = chorusPool.pop();
+      } else if (fullSongPool.length > 0) {
+        // Phase 2: Questions 31+ unlock remaining song lines
+        currentQ = fullSongPool.pop();
+      } else if (chorusPool.length > 0) {
+        // Fallback if fullSongPool finishes first
+        currentQ = chorusPool.pop();
+      } else {
+        // All available questions cleared
         showGameOverScreen(null, true);
         return;
       }
 
-      // Pop the next unique question from the shuffled pool
-      const currentQ = questionPool.pop();
       const targetTrack = currentQ.track;
       const chosenLine = currentQ.line;
 
-      document.getElementById("lyric-display").textContent = `"${chosenLine}"`;
+      const phaseText = questionCount <= 30 ? "🎵 ĐIỆP KHÚC (CHORUS) - Bài hát nào?" : "🎶 TOÀN BÀI - Bài hát nào?";
+      document.getElementById("phase-label").textContent = phaseText;
+      document.getElementById("lyric-display").textContent = `"${chosenLine}"`;[cite: 5]
 
       // Generate 3 unique distractors
-      const otherTracks = allTrackNames.filter(name => name !== targetTrack);
-      const distractors = otherTracks.sort(() => 0.5 - Math.random()).slice(0, 3);
-      const choices = [...distractors, targetTrack].sort(() => 0.5 - Math.random());
+      const otherTracks = allTrackNames.filter(name => name !== targetTrack);[cite: 5]
+      const distractors = otherTracks.sort(() => 0.5 - Math.random()).slice(0, 3);[cite: 5]
+      const choices = [...distractors, targetTrack].sort(() => 0.5 - Math.random());[cite: 5]
 
-      const container = document.getElementById("options-box");
-      container.innerHTML = "";
+      const container = document.getElementById("options-box");[cite: 5]
+      container.innerHTML = "";[cite: 5]
 
       choices.forEach((trackTitle) => {
-        const btn = document.createElement("button");
-        btn.className = "choice-btn";
-        btn.dataset.track = trackTitle;
-        btn.textContent = trackTitle;
-        btn.onclick = () => handlePick(btn, trackTitle, targetTrack, chosenLine);
-        container.appendChild(btn);
+        const btn = document.createElement("button");[cite: 5]
+        btn.className = "choice-btn";[cite: 5]
+        btn.dataset.track = trackTitle;[cite: 5]
+        btn.textContent = trackTitle;[cite: 5]
+        btn.onclick = () => handlePick(btn, trackTitle, targetTrack, chosenLine);[cite: 5]
+        container.appendChild(btn);[cite: 5]
       });
     }
 
     // --- HANDLE ANSWER SELECTION ---
     function handlePick(selectedBtn, chosenTitle, correctTitle, lyricLine) {
-      const buttons = document.querySelectorAll(".choice-btn");
-      buttons.forEach(b => (b.disabled = true));
+      const buttons = document.querySelectorAll(".choice-btn");[cite: 5]
+      buttons.forEach(b => (b.disabled = true));[cite: 5]
 
-      const isCorrect = (chosenTitle === correctTitle);
+      const isCorrect = (chosenTitle === correctTitle);[cite: 5]
 
-      // Save question to history
       answeredHistory.push({
         line: lyricLine,
         picked: chosenTitle,
         correct: correctTitle,
         isCorrect: isCorrect
-      });
+      });[cite: 5]
 
       if (isCorrect) {
-        selectedBtn.classList.add("correct");
+        selectedBtn.classList.add("correct");[cite: 5]
         buttons.forEach(b => {
           if (b !== selectedBtn) {
-            b.classList.add("dimmed");
+            b.classList.add("dimmed");[cite: 5]
           }
         });
 
-        score += 10;
-        streak += 1;
-        document.getElementById("score-val").textContent = score;
-        document.getElementById("streak-val").textContent = `🔥 CHUỖI: ${streak}`;
+        score += 10;[cite: 5]
+        streak += 1;[cite: 5]
+        document.getElementById("score-val").textContent = score;[cite: 5]
+        document.getElementById("streak-val").textContent = `🔥 CHUỖI: ${streak}`;[cite: 5]
 
         setTimeout(() => {
-          nextTurn();
+          nextTurn();[cite: 5]
         }, 700);
       } else {
-        selectedBtn.classList.add("wrong");
+        selectedBtn.classList.add("wrong");[cite: 5]
         buttons.forEach(b => {
           if (b.dataset.track === correctTitle) {
-            b.classList.add("correct");
+            b.classList.add("correct");[cite: 5]
           } else if (b !== selectedBtn) {
-            b.classList.add("dimmed");
+            b.classList.add("dimmed");[cite: 5]
           }
         });
 
         setTimeout(() => {
-          showGameOverScreen(correctTitle, false);
+          showGameOverScreen(correctTitle, false);[cite: 5]
         }, 1200);
       }
     }
@@ -874,74 +1577,74 @@
     // --- 3. SUPABASE CLOUD LEADERBOARD ---
     async function fetchCloudLeaderboard() {
       try {
-        const { data, error } = await supabaseClient
-          .from("leaderboard")
-          .select("name, score, created_at")
-          .order("score", { ascending: false })
-          .limit(10);
+        const { data, error } = await supabaseClient[cite: 5]
+          .from("leaderboard")[cite: 5]
+          .select("name, score, created_at")[cite: 5]
+          .order("score", { ascending: false })[cite: 5]
+          .limit(10);[cite: 5]
 
-        if (error) throw error;
-        return data || [];
+        if (error) throw error;[cite: 5]
+        return data || [];[cite: 5]
       } catch (err) {
-        console.error("Lỗi khi tải bảng xếp hạng:", err);
-        return [];
+        console.error("Lỗi khi tải bảng xếp hạng:", err);[cite: 5]
+        return [];[cite: 5]
       }
     }
 
     async function saveScoreToCloud(name, finalScore) {
       try {
-        const cleanName = name.trim() || "Ẩn danh";
+        const cleanName = name.trim() || "Ẩn danh";[cite: 5]
 
-        const { data: existingPlayers, error: fetchErr } = await supabaseClient
-          .from("leaderboard")
-          .select("id, score")
-          .ilike("name", cleanName)
-          .limit(1);
+        const { data: existingPlayers, error: fetchErr } = await supabaseClient[cite: 5]
+          .from("leaderboard")[cite: 5]
+          .select("id, score")[cite: 5]
+          .ilike("name", cleanName)[cite: 5]
+          .limit(1);[cite: 5]
 
-        if (fetchErr) throw fetchErr;
+        if (fetchErr) throw fetchErr;[cite: 5]
 
-        if (existingPlayers && existingPlayers.length > 0) {
-          const record = existingPlayers[0];
-          if (finalScore > record.score) {
-            const { error: updateErr } = await supabaseClient
-              .from("leaderboard")
-              .update({
-                score: finalScore,
-                created_at: new Date().toISOString()
+        if (existingPlayers && existingPlayers.length > 0) {[cite: 5]
+          const record = existingPlayers[0];[cite: 5]
+          if (finalScore > record.score) {[cite: 5]
+            const { error: updateErr } = await supabaseClient[cite: 5]
+              .from("leaderboard")[cite: 5]
+              .update({[cite: 5]
+                score: finalScore,[cite: 5]
+                created_at: new Date().toISOString()[cite: 5]
               })
-              .eq("id", record.id);
+              .eq("id", record.id);[cite: 5]
 
-            if (updateErr) throw updateErr;
+            if (updateErr) throw updateErr;[cite: 5]
           }
-          return true;
+          return true;[cite: 5]
         } else {
-          const { error: insertErr } = await supabaseClient
-            .from("leaderboard")
-            .insert([
-              { name: cleanName, score: finalScore }
+          const { error: insertErr } = await supabaseClient[cite: 5]
+            .from("leaderboard")[cite: 5]
+            .insert([[cite: 5]
+              { name: cleanName, score: finalScore }[cite: 5]
             ]);
 
-          if (insertErr) throw insertErr;
-          return true;
+          if (insertErr) throw insertErr;[cite: 5]
+          return true;[cite: 5]
         }
       } catch (err) {
-        console.error("Lỗi khi lưu điểm:", err);
-        return false;
+        console.error("Lỗi khi lưu điểm:", err);[cite: 5]
+        return false;[cite: 5]
       }
     }
 
     async function renderLeaderboardTable() {
-      const list = await fetchCloudLeaderboard();
-      if (list.length === 0) {
-        return `<p style="color: #64748b; text-align: center; margin: 1rem 0;">Chưa có kỷ lục nào được ghi nhận.</p>`;
+      const list = await fetchCloudLeaderboard();[cite: 5]
+      if (list.length === 0) {[cite: 5]
+        return `<p style="color: #64748b; text-align: center; margin: 1rem 0;">Chưa có kỷ lục nào được ghi nhận.</p>`;[cite: 5]
       }
 
-      let rows = list.map((item, index) => {
-        const dateStr = new Date(item.created_at).toLocaleDateString("vi-VN");
-        let medal = `#${index + 1}`;
-        if (index === 0) medal = "🥇 #1";
-        if (index === 1) medal = "🥈 #2";
-        if (index === 2) medal = "🥉 #3";
+      let rows = list.map((item, index) => {[cite: 5]
+        const dateStr = new Date(item.created_at).toLocaleDateString("vi-VN");[cite: 5]
+        let medal = `#${index + 1}`;[cite: 5]
+        if (index === 0) medal = "🥇 #1";[cite: 5]
+        if (index === 1) medal = "🥈 #2";[cite: 5]
+        if (index === 2) medal = "🥉 #3";[cite: 5]
 
         return `
           <tr>
@@ -950,8 +1653,8 @@
             <td><strong>${item.score}</strong></td>
             <td style="color: #94a3b8; font-size: 0.85rem;">${dateStr}</td>
           </tr>
-        `;
-      }).join("");
+        `;[cite: 5]
+      }).join("");[cite: 5]
 
       return `
         <table class="leaderboard-table">
@@ -965,22 +1668,20 @@
           </thead>
           <tbody>${rows}</tbody>
         </table>
-      `;
+      `;[cite: 5]
     }
 
-    // --- GAME OVER & ANSWER REVIEW SCREEN ---
-    // --- GAME OVER & ANSWER REVIEW SCREEN ---
+    // --- GAME OVER SCREEN ---
     async function showGameOverScreen(correctTitle, isVictory = false) {
-      const card = document.getElementById("game-card");
-      const badgeImgUrl = getScoreImage(score);
+      const card = document.getElementById("game-card");[cite: 5]
+      const badgeImgUrl = getScoreImage(score);[cite: 5]
 
-      // Render Question History List
-      let historyItemsHtml = "";
-      if (answeredHistory.length > 0) {
-        historyItemsHtml = answeredHistory.map((item, idx) => {
-          const statusClass = item.isCorrect ? "is-correct" : "is-wrong";
-          const icon = item.isCorrect ? "✅" : "❌";
-          const pillClass = item.isCorrect ? "correct-pill" : "wrong-pill";
+      let historyItemsHtml = "";[cite: 5]
+      if (answeredHistory.length > 0) {[cite: 5]
+        historyItemsHtml = answeredHistory.map((item, idx) => {[cite: 5]
+          const statusClass = item.isCorrect ? "is-correct" : "is-wrong";[cite: 5]
+          const icon = item.isCorrect ? "✅" : "❌";[cite: 5]
+          const pillClass = item.isCorrect ? "correct-pill" : "wrong-pill";[cite: 5]
 
           return `
             <div class="history-item ${statusClass}">
@@ -990,19 +1691,19 @@
                 ${!item.isCorrect ? `<span class="history-actual">Đáp án đúng: ${item.correct}</span>` : ""}
               </div>
             </div>
-          `;
-        }).join("");
+          `;[cite: 5]
+        }).join("");[cite: 5]
       } else {
-        historyItemsHtml = `<p style="color: #94a3b8; text-align: center; font-size: 0.9rem;">Chưa có câu trả lời nào.</p>`;
+        historyItemsHtml = `<p style="color: #94a3b8; text-align: center; font-size: 0.9rem;">Chưa có câu trả lời nào.</p>`;[cite: 5]
       }
 
-      const headerText = isVictory ? "XUẤT SẮC! BẠN ĐÃ CHIẾN THẮNG!" : "SAI GÒI!";
-      const headerColor = isVictory ? "var(--kahoot-green)" : "var(--kahoot-red)";
+      const headerText = isVictory ? "XUẤT SẮC! BẠN ĐÃ CHIẾN THẮNG!" : "SAI GÒI!";[cite: 5]
+      const headerColor = isVictory ? "var(--kahoot-green)" : "var(--kahoot-red)";[cite: 5]
       const answerBanner = (!isVictory && correctTitle) ? `
         <div class="correct-answer-banner">
           Đáp án đúng câu vừa rồi: <strong>${correctTitle}</strong>
         </div>
-      ` : "";
+      ` : "";[cite: 5]
 
       card.innerHTML = `
         <div class="game-over-header" style="color: ${headerColor};">${headerText}</div>
@@ -1030,10 +1731,10 @@
           <p style="text-align: center; color: #94a3b8; margin: 1rem 0;">Đang tải bảng điểm...</p>
         </div>
 
-        <button class="btn-restart" style="margin-bottom: 1.5rem;" onclick="startGame()">Đấu lại ván mới</button>
+        <button class="btn-restart" onclick="startGame()">Đấu lại ván mới</button>
 
-        <!-- Review Answered Questions (Moved to the bottom) -->
-        <div class="history-card" style="margin-bottom: 0;">
+        <!-- Review Answered Questions at the Bottom -->
+        <div class="history-card">
           <div class="history-title">
             <span>📝 CÁC CÂU ĐÃ TRẢ LỜI (${answeredHistory.length})</span>
             <span style="font-size: 0.85rem; color: #64748b;">${answeredHistory.filter(h => h.isCorrect).length} Đúng / ${answeredHistory.length}</span>
@@ -1042,36 +1743,36 @@
             ${historyItemsHtml}
           </div>
         </div>
-      `;
+      `;[cite: 5]
 
-      document.getElementById("board-container").innerHTML = await renderLeaderboardTable();
+      document.getElementById("board-container").innerHTML = await renderLeaderboardTable();[cite: 5]
     }
-    
+
     async function handleSaveScore() {
-      const nameInput = document.getElementById("player-name");
-      const saveBtn = document.getElementById("btn-save-action");
-      const name = nameInput.value;
+      const nameInput = document.getElementById("player-name");[cite: 5]
+      const saveBtn = document.getElementById("btn-save-action");[cite: 5]
+      const name = nameInput.value;[cite: 5]
 
-      saveBtn.disabled = true;
-      saveBtn.textContent = "...";
+      saveBtn.disabled = true;[cite: 5]
+      saveBtn.textContent = "...";[cite: 5]
 
-      const success = await saveScoreToCloud(name, score);
-      if (success) {
+      const success = await saveScoreToCloud(name, score);[cite: 5]
+      if (success) {[cite: 5]
         document.getElementById("save-section").innerHTML = `
           <p style="text-align: center; color: #0284c7; font-weight: 700; margin-bottom: 1.25rem;">
             Đã đồng bộ điểm số lên đám mây thành công!
           </p>
-        `;
-        document.getElementById("board-container").innerHTML = await renderLeaderboardTable();
+        `;[cite: 5]
+        document.getElementById("board-container").innerHTML = await renderLeaderboardTable();[cite: 5]
       } else {
-        alert("Không thể lưu điểm lên database. Vui lòng kiểm tra lại kết nối hoặc Supabase keys.");
-        saveBtn.disabled = false;
-        saveBtn.textContent = "Lưu";
+        alert("Không thể lưu điểm lên database. Vui lòng kiểm tra lại kết nối hoặc Supabase keys.");[cite: 5]
+        saveBtn.disabled = false;[cite: 5]
+        saveBtn.textContent = "Lưu";[cite: 5]
       }
     }
 
     // Initialize with Welcome Screen
-    showWelcomeScreen();
+    showWelcomeScreen();[cite: 5]
   </script>
 </body>
 </html>
